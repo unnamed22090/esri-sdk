@@ -2,10 +2,10 @@
 // See http://js.arcgis.com/3.16/esri/copyright.txt for details.
 try {
 	if (baseUrl == undefined || baseUrl == null || baseUrl == '') {
-		baseUrl = '127.0.0.1/esri/3.16';
+		baseUrl = 'http://darknamer.com/esri/3.16';
 	}
 } catch (ex) {
-	var baseUrl = '127.0.0.1/esri/3.16';
+	var baseUrl = 'http://darknamer.com/esri/3.16';
 	console.log(ex);
 }
 
