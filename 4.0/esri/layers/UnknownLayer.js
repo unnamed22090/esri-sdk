@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../core/tsSupport/extendsHelper ../core/tsSupport/decorateHelper ./Layer ../core/promiseUtils ../core/Error ../core/accessorSupport/typescript".split(" "),function(k,l,e,b,f,g,h,c){return function(d){function a(a){d.call(this);this.resourceInfo=null}e(a,d);a.prototype.initialize=function(){var a=this.resourceInfo&&(this.resourceInfo.layerType||this.resourceInfo.type),b="Unknown layer type";a&&(b+=" "+a);this.addResolvingPromise(g.reject(new h("layer:unknown-layer-type",b)))};
+a.fromJSON=function(b){return new a({resourceInfo:b})};b([c.shared("esri.layers.UnknownLayer")],a.prototype,"declaredClass",void 0);b([c.property()],a.prototype,"resourceInfo",void 0);return a=b([c.subclass()],a)}(f)});

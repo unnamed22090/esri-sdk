@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["./Accessoire"],function(d){return d.createSubclass({constructor:function(){this._groups={}},destroy:function(){this.removeAll();this._groups=null},_groups:null,_sizeGetter:function(){var a=0,b=this._groups,c;for(c in b)a+=b[c].length;return a},add:function(a,b){if(!a||!a.remove&&!a.length)return this;var c=this._getOrCreateGroup(b);if("function"===typeof a.remove)c.push(a);else for(var e=0,d=a.length;e<d;e++)c.push(a[e]);this.notifyChange("size");return this},has:function(a){a=this._groups[a];
+return!!a&&0<a.length},remove:function(a){if(Array.isArray(a))return a.forEach(this.remove.bind(this)),this;a=this._getGroup(a);if(!a)return this;for(var b=0,c=a.length;b<c;b++)a[b].remove();a.length=0;this.notifyChange("size");return this},removeAll:function(){var a=this._groups,b;for(b in a)this.remove(b),delete a[b];return this},_getOrCreateGroup:function(a){return this._getGroup(a)||(this._groups[this._ensureGroupName(a)]=[])},_getGroup:function(a){return this._groups[this._ensureGroupName(a)]},
+_ensureGroupName:function(a){return a||"_default_"}})});

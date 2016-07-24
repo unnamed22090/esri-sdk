@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["../core/declare","../core/lang","./Symbol3D","dojo/_base/lang"],function(g,f,h,k){var c=g(h,{declaredClass:"esri.symbol.PolygonSymbol3D",type:"polygon-symbol-3d",_allowedLayerTypes:"Extrude Fill Line Icon Object Text".split(" "),toJSON:function(){var b=[];this.symbolLayers.forEach(function(a){var d=a.toJSON();b.push(d);if("Fill"===a.type&&a.outline&&0<a.outline.size&&a.outline.color){var c=a.outline.size,e=a.outline.color;b.push({type:"Line",enable:a.enable,material:{color:[e.r,e.g,e.b],
+transparency:100*(1-e.a)},elevationInfo:f.clone(d.elevationInfo),size:c})}});return f.fixJson(k.mixin(this.inherited(arguments),{symbolLayers:b}))},clone:function(){return new c({symbolLayers:f.clone(this.symbolLayers)})}});c.fromJSON=function(b){var a=new c;a.read(b);if(2===a.symbolLayers.length&&"Fill"===a.symbolLayers.getItemAt(0).type&&"Line"===a.symbolLayers.getItemAt(1).type){b=a.symbolLayers.getItemAt(0);var d=a.symbolLayers.getItemAt(1);b.outline={size:d.size,color:d.material.color};a.symbolLayers.removeAt(1)}return a};
+return c});

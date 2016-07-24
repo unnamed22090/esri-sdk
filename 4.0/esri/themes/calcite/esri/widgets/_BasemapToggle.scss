@@ -1,0 +1,49 @@
+.#{$theme-name} {
+
+  .BasemapToggle {
+
+    .toggleButton {
+      background: $esri-basemaptoggle-bg;
+      @include user-select(none);
+      @include calcite-box-shadow-base();
+      cursor: pointer;
+    }
+
+    .basemapImage {
+      width: $esri-basemaptoggle-width;
+      height: $esri-basemaptoggle-height;
+      overflow: hidden;
+      .basemapBG {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+    }
+
+    .basemapImageContainer {
+      position: relative;
+    }
+
+    .basemapTitle {
+      display: block;
+      width: 100%;
+      color: $esri-basemaptoggle-color;
+      margin: 0;
+      font-size: $esri-basemaptoggle-font-size;
+      line-height: 1.2;
+      padding: (20 - 1.2*$esri-basemaptoggle-font-size)*0.5;
+      background: $esri-basemaptoggle-title-bg;
+      background: rgba($esri-basemaptoggle-title-bg, 0.7);
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      z-index: 2;
+      @include box-sizing(border-box);
+    }
+
+  }
+
+}

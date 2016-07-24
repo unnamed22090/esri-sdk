@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Buffer in 2D and 3D - 4.0</title>
+
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+    }
+    
+    .viewDivBase {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 49.9%;
+    }
+    
+    #viewDiv2d {
+      float: left;
+    }
+    
+    #viewDiv3d {
+      float: right;
+    }
+    
+    .title {
+      top: 0px;
+      position: absolute;
+      z-index: 99;
+      background-color: white;
+      padding: 5px;
+      opacity: 0.75;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.0/"></script>
+
+  <script>
+    require([
+        "esri/Map",
+        "esri/views/SceneView",
+        "esri/views/MapView",
+        "esri/layers/GraphicsLayer",
+        "esri/Graphic",
+        "esri/symbols/SimpleMarkerSymbol",
+        "esri/renderers/SimpleRenderer",
+        "esri/symbols/SimpleFillSymbol",
+        "esri/geometry/geometryEngine",
+        "esri/geometry/Point",
+        "dojo/domReady!"
+      ],
+      function(
+        Map,
+        SceneView,
+        MapView,
+        GraphicsLayer,
+        Graphic,
+        SimpleMarkerSymbol,
+        SimpleRenderer,
+        SimpleFillSymbol,
+        geometryEngine,
+        Point
+      ) {
+
+        var map = new Map({
+          basemap: "satellite"
+        });
+
+        var view3d = new SceneView({
+          container: "viewDiv3d",
+          map: map,
+          zoom: 4,
+          center: [0, 45]
+        });
+
+        var view2d = new MapView({
+          container: "viewDiv2d",
+          map: map,
+          zoom: 3,
+          center: [0, 45]
+        });
+
+        /********************************************************************
+         * Add two graphics layers to map: one for points, another for buffers
+         ********************************************************************/
+
+        var polySym = new SimpleFillSymbol({
+          color: [255, 255, 255, 0.5],
+          outline: {
+            color: [0, 0, 0, 0.5],
+            width: 2
+          }
+        });
+
+        var pointSym = new SimpleMarkerSymbol({
+          color: [255, 0, 0],
+          outline: {
+            color: [255, 255, 255],
+            width: 1
+          },
+          size: 7
+        });
+
+        var bufferLayer = new GraphicsLayer({
+          renderer: new SimpleRenderer({
+            symbol: polySym
+          })
+        });
+
+        var pointLayer = new GraphicsLayer({
+          renderer: new SimpleRenderer({
+            symbol: pointSym
+          })
+        });
+
+        map.addMany([bufferLayer, pointLayer]);
+
+        /********************************************************************
+         * Generate points every 10 degrees along Prime Meridian. Add to layer.
+         * Buffer each point by 560km using GeometryEngine. Add buffers to map.
+         ********************************************************************/
+
+        for (var lat = -80; lat <= 80; lat += 10) {
+          var point = new Point({
+            longitude: 0,
+            latitude: lat
+          });
+          pointLayer.add(new Graphic({
+            geometry: point
+          }));
+
+          /********************************************************************
+           * Geodesic buffer calculates the true distance to buffer a point,
+           * minimizing the distortion that exists when buffering points away
+           * from a projection's line of tangency. This distortion is evident
+           * in the 2D view of this application. This map uses a Web Mercator
+           * spatial reference, which has a line of tangency at the equator.
+           * Buffers created on the equator have very little distortion in their
+           * shape. The further buffers are created away from the equator, the
+           * more distorted they will be in their shape.
+           *
+           * If using a standard planar buffer, the shape of the buffers won't
+           * distort in 2D views, but their size and areas will be very distorted
+           * as they move away from the equator.
+           ********************************************************************/
+          var buffer = geometryEngine.geodesicBuffer(point, 560, "kilometers");
+          bufferLayer.add(new Graphic({
+            geometry: buffer
+          }));
+        }
+      });
+  </script>
+</head>
+
+<body>
+  <div class="viewDivBase" id="viewDiv2d">
+    <div class="title" style="right: 49.9%;">MapView</div>
+  </div>
+  <div class="viewDivBase" id="viewDiv3d">
+    <div class="title" style="right: 0;">SceneView</div>
+  </div>
+</body>
+
+</html>

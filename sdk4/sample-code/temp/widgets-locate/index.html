@@ -1,0 +1,43 @@
+<!DOCTYPE HTML><html><head><meta charset="utf-8"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><title>Locate button - 4.0</title><link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css"><style>html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }</style><script src="https://js.arcgis.com/4.0/"></script><script>require([
+      "esri/Map",
+      "esri/views/SceneView",
+      "esri/layers/GraphicsLayer",
+      "esri/widgets/Locate",
+      "dojo/domReady!"
+    ], function(
+      Map, SceneView, GraphicsLayer, Locate
+    ) {
+      var map = new Map({
+        basemap: "streets",
+        ground: "world-elevation"
+      });
+
+      var view = new SceneView({
+        container: "viewDiv",
+        map: map,
+        center: [-56.049, 38.485, 78],
+        zoom: 3
+      });
+
+      var gl = new GraphicsLayer();
+      map.add(gl);
+
+      var locateBtn = new Locate({
+        view: view,
+        graphicsLayer: gl
+      });
+      locateBtn.startup();
+
+      // Add the locate widget to the top left corner of the view
+      view.ui.add(locateBtn, {
+        position: "top-left",
+        index: 0
+      });
+    });</script></head><body><div id="viewDiv"></div></body></html>

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../../core/tsSupport/extendsHelper ../../core/tsSupport/decorateHelper ../../core/accessoireSupport/typescript ./LayerCreator ../../geometry/Extent ../../layers/WebTileLayer ../../layers/support/TileInfo".split(" "),function(n,p,g,d,e,h,k,l,m){return function(f){function c(){f.apply(this,arguments)}g(c,f);c.prototype.layerProperties=function(a){return this.inherited(arguments).then(function(b){void 0!==a.copyright&&(b.copyright=a.copyright);a.fullExtent&&(b.fullExtent=k.fromJSON(a.fullExtent),
+b.spatialReference=b.fullExtent&&b.fullExtent.spatialReference.clone());a.tileInfo&&(b.tileInfo=m.fromJSON(a.tileInfo));void 0!==a.urlTemplate?b.urlTemplate=a.urlTemplate:void 0!==a.templateUrl&&(b.urlTemplate=a.templateUrl);return b})};d([e.shared("esri.portal.creators.WebTileLayerCreator")],c.prototype,"declaredClass",void 0);d([e.shared(l)],c.prototype,"type",void 0);return c=d([e.subclass()],c)}(h)});

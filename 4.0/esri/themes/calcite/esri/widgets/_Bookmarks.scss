@@ -1,0 +1,170 @@
+@import "compass/utilities/general/clearfix";
+
+.#{$theme-name} {
+
+  .esriBookmarks {
+    font-size: $esri-bookmarks-font-size;
+    width: $esri-bookmarks-width;
+    position: relative;
+  }
+  .esriBookmarkTable {
+    border-spacing: 0px;
+    border-collapse:collapse;
+  }
+  .esriBookmarkLabel {
+    position: relative;
+    float: left;
+    overflow:hidden;
+    line-height: ($line-height-computed / $esri-bookmarks-font-size);
+    line-height: $line-height-computed; // computed
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align:left;
+    vertical-align:middle;
+    cursor: pointer;
+    margin-left: $esri-bookmarks-label-margin-left;
+  }
+  .esriBookmarkItem {
+    padding: $padding-base-vertical $padding-base-horizontal;
+    width:100%;
+    &,
+    > * {
+      line-height: ($line-height-computed / $esri-bookmarks-font-size);
+      line-height: $line-height-computed; // computed
+    }
+    @include pie-clearfix;
+    &:before {
+      float: left;
+      @include dijit-icons();
+      content: "";
+      color: inherit;
+      line-height: ($line-height-computed / $esri-bookmarks-font-size);
+      line-height: $line-height-computed; // computed
+      margin-right: $padding-base-horizontal*.5;
+    }
+  }
+  .esriAddBookmark {
+    color: $Calcite_Gray_550;
+    &:before {
+      content: "\e620";
+    }
+  }
+  .esriBookmarkHighlight {
+    background-color: $Calcite_Highlight_Blue_100;
+  }
+  .esriBookmarkEditImage,
+  .esriBookmarkRemoveImage{
+    float:right;
+    width:30px;
+    cursor: pointer;
+    @include dijit-icons();
+    line-height: ($line-height-computed / $esri-bookmarks-font-size);
+    line-height: $line-height-computed; // computed
+    text-align: center;
+    &:hover,
+    &:active {
+      @include transition(all .25s ease);
+      @include opacity(.75);
+    }
+  }
+  .esriBookmarkEditImage {
+    &:before {
+      content: "\e61b";
+    }
+  }
+  .esriBookmarkRemoveImage {
+    &:before {
+      content: "\e600";
+    }
+  }
+  .esriBookmarkEditBox{
+    position: fixed;
+    font-size:12px;
+    height: $line-height-computed + $padding-base-vertical*2;
+    width: 160px;
+    z-index: 999;
+    padding: 0;
+    margin: 0 $padding-base-horizontal;
+    border: 0;
+    border-bottom: 1px solid $Brand_Blue_200;
+    background: $Calcite_Gray_050;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  // DND
+  .esriBookmarks {
+    .dojoDndItem {
+      padding: 0;
+      .esriBookmarkItem {
+        &:before {
+          content: "\e601";
+        }
+      }
+    }
+    .dojoDndItemAnchor,
+    .dojoDndItemSelected {
+      &,
+      &:hover,
+      &:focus,
+      &.dojoDndItemOver {
+        background-color: transparent;
+      }
+    }
+  }
+  
+  .esriBookmarkList {
+    .esriBookmarkItem {
+      &:before {
+        color: $Calcite_Gray_300;
+      }
+    }
+    .esriBookmarkHighlight {
+      &:before {
+        color: $Calcite_Gray_400;
+      }
+    }
+  }
+
+  // Avatar
+  .dojoDndAvatarItem {
+    display: none;
+  }
+
+  // Onmove
+  &.dojoDndMove {
+    .esriBookmarkList {
+      .esriBookmarkHighlight {
+        background-color: transparent;
+        &:before {
+          color: $Calcite_Gray_300;
+        }
+      }
+      .dojoDndItemAnchor,
+      .dojoDndItemSelected {
+        &,
+        &:hover,
+        &:focus,
+        &.dojoDndItemOver {
+          background-color: transparent;
+          .esriBookmarkItem {
+            background-color: $Calcite_Highlight_Blue_150;
+            &:before {
+              color: $Calcite_Gray_400;
+            }
+          }
+        }
+        .esriBookmarkHighlight {
+          &:before {
+            color: $Calcite_Gray_400;
+          }
+        }
+      }
+    }
+    .esriAddBookmark {
+        background-color: transparent;
+    }
+  }
+
+}

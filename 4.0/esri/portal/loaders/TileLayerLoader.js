@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../../core/tsSupport/extendsHelper ../../core/tsSupport/decorateHelper ../../core/accessoireSupport/typescript ./support/jsonUtils ./LayerLoader".split(" "),function(k,l,g,c,d,e,h){return function(f){function a(){f.apply(this,arguments)}g(a,f);a.prototype.loadLayer=function(){var a=this;return this.fetchData().then(function(b){b&&(e.readIfDefined(a.instance,"opacity",b.opacity,{opacity:b.opacity}),e.readPopupTemplates(a.instance,b))})};c([d.shared("esri.portal.loaders.TileLayerLoader")],
+a.prototype,"declaredClass",void 0);c([d.shared(["Image Service","Map Service"])],a.prototype,"supportedItemTypes",void 0);return a=c([d.subclass()],a)}(h)});

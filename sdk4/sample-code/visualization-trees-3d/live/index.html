@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Symbolize feature sizes based on real world sizes (3D) - 4.0</title>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.0/"></script>
+
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <script>
+    require([
+        "esri/Map",
+        "esri/views/SceneView",
+        "esri/layers/FeatureLayer",
+        "esri/renderers/SimpleRenderer",
+        "esri/symbols/PointSymbol3D",
+        "esri/symbols/ObjectSymbol3DLayer",
+        "dojo/domReady!"
+      ],
+      function(
+        Map, SceneView, FeatureLayer, SimpleRenderer, PointSymbol3D,
+        ObjectSymbol3DLayer
+      ) {
+
+        /*****************************************************************
+         * Set the Renderer and Layer for the tree trunks. Since visual variables only 
+         * apply to one symbol layer in version 4.0 of the ArcGIS JS API,
+         * we need to separate the trunks from the crowns in different layers.
+         * 
+         * This is subject to change in future releases of the API.
+         * 
+         * The axis property of each size visual variable applies the value of
+         * the field in the units of the valueUnit to the feature only for the
+         * specified axis.
+         *****************************************************************/
+
+        var trunkRenderer = new SimpleRenderer({
+          symbol: new PointSymbol3D({
+            symbolLayers: [new ObjectSymbol3DLayer({
+              material: {
+                color: "brown"
+              },
+              resource: {
+                primitive: "cylinder"
+              }
+            })]
+          }),
+          visualVariables: [
+          {
+            type: "size",
+            axis: "height",
+            field: "Height",
+            valueUnit: "feet"
+          }, {
+            type: "size",
+            axis: "width-and-depth",
+            field: "DBH1",
+            valueUnit: "inches"
+          }]
+        });
+
+        var trunkLyr = new FeatureLayer({
+          url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Landscape_Trees/FeatureServer/0",
+          renderer: trunkRenderer,
+          outFields: ["*"],
+          elevationInfo: {
+            mode: "onTheGround"
+          },
+          definitionExpression: "Height >= 14 AND Height <= 40"
+        });
+
+        /*****************************************************************
+         * Set the Renderer and Layer for the tree crowns. Four visual variables
+         * are used in this symbol. One for the crown height (height axis), 
+         * another for crown diameter from north to south (depth axis), and 
+         * another for crown diameter from east to west (width axis).
+         * 
+         * The color visual variable shades the tree crowns based on their 
+         * carbon storage.
+         *****************************************************************/
+
+        var crownRenderer = new SimpleRenderer({
+          symbol: new PointSymbol3D({
+            symbolLayers: [new ObjectSymbol3DLayer({
+              material: {
+                color: "green"
+              },
+              resource: {
+                primitive: "sphere"
+              }
+            })]
+          }),
+          visualVariables: [
+          {
+            type: "size",
+            axis: "height",
+            field: "Crown_Height",
+            valueUnit: "feet"
+          }, {
+            type: "size",
+            axis: "width",
+            field: "Width_EW",
+            valueUnit: "feet"
+          }, {
+            type: "size",
+            axis: "depth",
+            field: "Width_NS",
+            valueUnit: "feet"
+          }, {
+            type: "color",
+            field: "C_Storage", // Carbon storage
+            minDataValue: 0,
+            maxDataValue: 800,
+            colors: ["#f7fcb9", "#31a354"]
+          }]
+        });
+
+        var crownLyr = new FeatureLayer({
+          url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Landscape_Trees/FeatureServer/0",
+          renderer: crownRenderer,
+          outFields: ["*"],
+          elevationInfo: {
+            mode: "relativeToGround",
+            offset: 6.5
+          },
+          definitionExpression: "Height >= 14 AND Height <= 40",
+          popupTemplate: { // autocasts as new PopupTemplate()
+            title: "{Cmn_Name}",
+            content: "<i>{Sci_Name}</i><br>" +
+              "This tree is in {Condition} condition and is {Height} feet in height."
+          }
+        });
+
+        var map = new Map({
+          basemap: "streets",
+          ground: "world-elevation",
+          layers: [trunkLyr, crownLyr]
+        });
+
+        var view = new SceneView({
+          container: "viewDiv",
+          map: map,
+          camera: {
+            position: {
+              x: -9177356,
+              y: 4246783,
+              z: 723,
+              spatialReference: {
+                wkid: 3857
+              }
+            },
+            heading: 0,
+            tilt: 83
+          }
+        });
+      });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+</body>
+
+</html>

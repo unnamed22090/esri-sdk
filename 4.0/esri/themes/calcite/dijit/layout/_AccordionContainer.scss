@@ -1,0 +1,69 @@
+/* Accordion
+ * 
+ * Styling AccordionContainer basically means styling the accordion pane (dijitAccordionInnerContainer)
+ * and the title inside of it (dijitAccordionTitle).   There are 4 basic states to style:
+ * 
+ * 1. closed pane (and default styling): 
+ * 		.dijitAccordionInnerContainer - container for each accordion child
+ * 		.dijitAccordionTitle - title for each accordion child
+ *
+ * 2. active closed pane (ie, mouse down on a title bar)
+ * 		.dijitAccordionInnerContainerActive - for background-color, border
+ * 		.dijitAccordionInnerContainerActive dijitAccordionTitle - for text color
+ * 
+ * 3. open pane (expanded child)
+ *		.dijitAccordionChildWrapper - wraps around the child widget (typically ContentPane)
+ *			setting a margin so that there's blue trim all the way around the child
+ *
+ * 		These rules need to override the closed pane active:
+ *
+ * 		.dijitAccordionInnerContainerSelected - for background-color, border
+ * 		.dijitAccordionInnerContainerSelected .dijitAccordionTitle - for text color
+ * 
+ * 4. hovered pane, open or closed
+ * 		The selectors below affect hovering over both a closed pane (ie, hovering a title bar),
+ * 		and hovering over an open pane.   Also, treat mouse down on an open pane as a hover:
+ *
+ * 		.dijitAccordionInnerContainerHover, .dijitAccordionInnerContainerSelectedActive - for background-color, border
+ * 		.dijitAccordionInnerContainerHover .dijitAccordionTitle - for text color
+ */
+
+.#{$theme-name} {
+
+  .dijitAccordionContainer {
+  	border: 0;
+
+    .dijitAccordionInnerContainer + .dijitAccordionInnerContainer {
+      margin-top: 5px;
+    }
+  }
+
+  .dijitAccordionInnerContainer {
+    background-color: $panel-bg;
+    border: 1px solid $panel-default-border;
+    border-radius: $panel-border-radius;
+    @include box-shadow(0 1px 1px rgba(0,0,0,.05));
+  	@include transition-property(background-color, border);
+   	@include transition-duration(.3s);
+  	@include transition-timing-function(linear);
+
+    .dijitAccordionTitle {
+      padding: $panel-heading-padding;
+      @include border-top-radius(($panel-border-radius - 1));
+      color: $panel-default-text;
+      background-color: $panel-default-heading-bg;
+
+      .dijitAccordionText {
+        font-weight: 300;
+        line-height: 1.2;
+        font-size: ceil(($font-size-base * 1.125));
+        color: inherit;
+      }
+    }
+
+    .dijitAccordionChildWrapper {
+    	border-top: 1px solid $panel-default-border;
+    }
+  }
+
+}

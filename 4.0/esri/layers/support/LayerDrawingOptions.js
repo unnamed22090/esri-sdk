@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("../../core/declare dojo/_base/lang dojo/_base/array ../../core/lang ../../renderers/support/jsonUtils ./LabelClass".split(" "),function(d,e,c,f,g,h){return d(null,{declaredClass:"esri.layers.support.LayerDrawingOptions",constructor:function(a){if(a&&(e.mixin(this,a),a.renderer&&(this.renderer=g.fromJSON(a.renderer)),a.transparency&&(this.opacity=1-a.transparency/100),a.labelingInfo&&0<a.labelingInfo.length)){this.labelingInfo=[];var b;c.forEach(a.labelingInfo,function(a){b=h.fromJSON(a);this.labelingInfo.push(b)},
+this)}},toJSON:function(){var a={renderer:this.renderer&&this.renderer.toJSON(),scaleSymbols:this.scaleSymbols,showLabels:this.showLabels};null!=this.opacity&&(a.transparency=100*(1-this.opacity));this.labelingInfo&&0<this.labelingInfo.length&&(a.labelingInfo=[],c.forEach(this.labelingInfo,function(b){a.labelingInfo.push(b.toJSON())}));return f.fixJson(a)}})});

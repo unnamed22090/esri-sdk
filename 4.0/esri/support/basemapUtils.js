@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ./basemapDefinitions ../core/accessorSupport/ensureType ../layers/TileLayer ../Basemap".split(" "),function(m,d,f,k,l,e){function g(c,b){var a;if("string"===typeof c){if(!(c in f))return a=Object.keys(f).map(function(a){return'"'+a+'"'}).join(", "),console.warn("Unable to find basemap definition for: "+c+". Try one of these: "+a),null;b&&(a=b[c]);a||(a=e.fromId(c),b&&(b[c]=a))}else a=k.default(e,c);return a}function h(c,b){return c.map(function(a){return!(a instanceof l)?a:
+b.find(function(b){return b.constructor===a.constructor&&b.url===a.url})||a})}d.createCache=function(){return{}};d.ensureType=g;d.clonePreservingTiledLayers=function(c,b){void 0===b&&(b=null);var a=g(c);if(!a)return null;a=new e({id:a.id,title:a.title,baseLayers:a.baseLayers.clone(),referenceLayers:a.referenceLayers.clone()});b&&(a.baseLayers=h(a.baseLayers,b.baseLayers),a.referenceLayers=h(a.referenceLayers,b.referenceLayers));return a}});

@@ -1,0 +1,134 @@
+.#{$theme-name} {
+  
+  .esriSimpleSliderTL {
+    top:15px;
+    left:15px;
+  }
+
+  .esriSimpleSliderTR {
+    top:15px;
+    right:15px;
+  }
+
+  .esriSimpleSliderBL {
+    bottom:35px;
+  /*changed from 15px to 35px to stay above bing logo */
+    left:15px;
+  }
+
+  .esriSimpleSliderBR {
+    bottom:40px;
+  /*changed from 15px to 40px to stay above esri logo */
+    right:15px;
+  }
+
+  // Base styles
+  // --------------------------------------------------
+    
+  .esriSimpleSlider {
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    border-radius: $border-radius-base;
+    @include calcite-box-shadow-base();
+    
+    // Hide default symbols: "+", "-"
+    span {
+      display: none;
+    }
+    
+    // Buttons
+    div {
+      width: 32px;
+      height: 32px;
+      border-width: 0;
+      border-style: none;
+      font-size: 14px;
+      @include button-variant($esri-btn-default-color, $esri-btn-default-bg);
+      @include user-select(none);
+      @include box-sizing(border-box);
+      cursor: pointer;
+      @include transition(all .25s ease);
+      @include dijit-icons();
+      font-size: $esri-icon-size-default;
+      line-height: 32px/$esri-icon-size-default;
+    }
+
+    // Increment button
+    .esriSimpleSliderIncrementButton {
+      border-radius: $border-radius-base $border-radius-base 0 0;
+      &:before {
+        content: "\e620";
+      }
+    }
+    
+    // Decrement button
+    .esriSimpleSliderDecrementButton {
+      border-radius: 0 0 $border-radius-base $border-radius-base;
+      &,
+      &:hover,
+      &:focus {
+        border-top: 0;
+      }
+      
+      &:before {
+        content: "\e621";
+      }
+    }
+    
+  }
+
+  // Disabled state
+  .esriSimpleSliderDisabledButton {
+    &,
+    &:hover,
+    &:active {
+      cursor: false;
+      pointer-events: none;
+      color: $esri-btn-default-color;
+      background-color: $esri-btn-default-bg;
+      @include opacity(0.65);
+    }
+  }
+
+  // Vertical
+  // --------------------------------------------------
+    
+  .esriSimpleSliderVertical {
+    .esriSimpleSliderIncrementButton {
+      border-bottom: 1px solid $Calcite_Gray_300;
+    }
+  }
+
+
+  // Horizontal
+  // --------------------------------------------------
+    
+  .esriSimpleSliderHorizontal {
+    // Let's align with bing and esri logos
+    &.esriSimpleSliderBL {
+      left: 5px;
+    }
+
+    &.esriSimpleSliderBR {
+      right: 5px;
+    }
+
+    .esriSimpleSliderIncrementButton {
+      float: right;
+      border-left: 1px solid $Calcite_Gray_300;
+      border-radius: 0 $border-radius-base $border-radius-base 0;
+    }
+
+    .esriSimpleSliderDecrementButton {
+      float: left;
+      border-radius: $border-radius-base  0 0 $border-radius-base;
+    }
+
+    .esriSimpleSliderIncrementButton.dj_ie67Fix {
+      float: none;
+      text-align: center;
+    }
+  }
+  
+}

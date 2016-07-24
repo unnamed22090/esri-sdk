@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../../../core/tsSupport/extendsHelper ../../../core/tsSupport/decorateHelper ../../../core/accessorSupport/typescript ../../../core/Accessor".split(" "),function(k,l,e,b,c,f){var g=function(d){function a(){d.apply(this,arguments)}e(a,d);b([c.property({value:1})],a.prototype,"lodFactor",void 0);return a=b([c.subclass()],a)}(f),h=function(d){function a(){d.apply(this,arguments)}e(a,d);b([c.property({value:0})],a.prototype,"lodBias",void 0);return a=b([c.subclass()],a)}(f);return function(d){function a(){d.apply(this,
+arguments)}e(a,d);a.prototype.getDefaults=function(){return{sceneLayer:new g,tiledSurface:new h,antialiasingEnabled:!0}};b([c.property()],a.prototype,"sceneLayer",void 0);b([c.property()],a.prototype,"tiledSurface",void 0);b([c.property()],a.prototype,"antialiasingEnabled",void 0);return a=b([c.subclass()],a)}(f)});

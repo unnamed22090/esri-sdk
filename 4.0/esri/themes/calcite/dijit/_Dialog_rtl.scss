@@ -1,0 +1,51 @@
+.#{$theme-name} {
+
+  .dijitDialogRtl,
+  .dijitTooltipDialogRtl {
+    .dijitDialogCloseIcon {
+      float: left;
+    }
+
+    .dijitDialogPaneActionBar {
+    	text-align: left;
+      .dijitButton + .dijitButton {
+        margin-left: 0;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .dijitTooltip {
+    // Tooltip: Below & Above
+    &.dijitTooltipBelow,
+    &.dijitTooltipAbove {
+      &.dijitTooltipABRight {
+        .dijitTooltipConnector {
+          left: auto;
+          right: 15px;
+        }
+      }
+    }
+  }
+
+
+
+
+// TooltipDialog
+  // --------------------------------------------------
+  .dijitTooltipDialogRtl {
+    // TooltipDialog: Below
+    &.dijitTooltipBelow {
+      .dijitTooltipConnector {
+      }
+    }
+
+
+    // TooltipDialog: Above
+    &.dijitTooltipAbove {
+      .dijitTooltipConnector {
+      }
+    }
+  }
+
+}

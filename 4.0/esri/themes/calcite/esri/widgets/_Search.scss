@@ -1,0 +1,397 @@
+.#{$theme-name} {
+  
+  .arcgisSearch {
+    @include calcite-box-shadow-base();
+    
+    .searchGroup {
+      position: relative;
+      font-family: $font-family-base;
+      color: $input-color;
+      @include box-sizing(content-box);
+    }
+    
+    .searchInputGroup {
+      @include bidi-value("float", left, right);
+      position: relative;
+      display: inline-block;
+      
+      form {
+        margin: 0;
+        padding: 0;
+      }
+    }
+    
+    // Button
+    // --------------------------------------------------
+
+    .searchBtn {
+      display: block;
+      @include bidi-value("float", left, right);
+      padding: 0;
+      margin: 0;
+      font-size: $esri-icon-size-default;
+      line-height: 32px/$esri-icon-size-default;
+      font-weight: normal;
+      //line-height: 20px;
+      width: 32px;
+      height: 32px;
+      @include button-variant($esri-btn-default-color, $esri-btn-default-bg);
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      -ms-touch-action: manipulation;
+      touch-action: manipulation;
+      cursor: pointer;
+      @include user-select(none);
+      border-width: 0;
+      border-style: none;
+      border-radius: 0 $border-radius-base $border-radius-base 0;
+      @include transition(all .25s ease);
+      @include box-sizing(content-box);
+      outline: none;
+      
+      &.searchToggle {
+        border-right: 1px solid $esri-input-divider-bg;
+        border-radius: $border-radius-base 0 0 $border-radius-base;
+      }
+      
+      &.searchSubmit {
+        border-left: 1px solid $esri-input-divider-bg;
+      }
+      
+      .searchButtonText {
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+        position: absolute;
+        height: 1px;
+        width: 1px;
+      }
+    }
+    
+    .searchToggle {
+      display: none;
+    }
+
+    // Input
+    // --------------------------------------------------
+      
+    .searchGroup .searchInput {
+      position: relative;
+      z-index: 2;
+      margin: 0;
+      @include bidi-value("float", left, right);
+      display: block;
+      height:32px;
+      width: 200px;
+      padding: $padding-base-vertical 24px $padding-base-vertical 12px;
+      font-size: $esri-font-size-base;
+      line-height: (32px - $padding-base-vertical*2);
+      color: $input-color;
+      background-color: $input-bg;
+      border-width: 0;
+      border-style: none;
+      border-radius: $border-radius-base 0 0 $border-radius-base;
+      @include box-sizing(border-box);
+      
+      &:focus {
+        outline: 0;
+      }
+      
+      &::-moz-placeholder {
+        color: $esri-input-color-placeholder;
+        opacity: 1;
+      }
+      
+      &::-ms-clear {
+        display: none;
+      }
+      
+      &:-ms-input-placeholder {
+        color: $esri-input-color-placeholder;
+      }
+      
+      &::-webkit-input-placeholder {
+        color: $esri-input-color-placeholder;
+      }
+    }
+    
+    .searchClear {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      height: 32px;
+      width: 24px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .sourceName {
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+      position: absolute;
+      height: 1px;
+      width: 1px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    
+    // Icons
+    // --------------------------------------------------
+      
+    .searchIcon {
+      display: inline-block;
+      line-height: 32px;
+    }
+    
+    .searchClose,
+    .searchSpinner {
+      width: 24px;
+      height: 32px;
+    }
+
+
+    // Clear
+    .hasValue .searchClear {
+      display: block;
+    }
+  
+    .searchClose {
+    }
+
+    // Loading      
+    .searchSpinner {
+      display: none;
+    } 
+    
+    .searchLoading .searchClose {
+      display: none;
+    }
+    
+    .searchLoading .searchSpinner {
+      display: block;
+      &:before {
+        @include animation(anim-rotate 1.25s infinite linear);
+      }
+    }
+
+    // Menu
+    // --------------------------------------------------
+      
+    .searchMenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1000;
+      display: none;
+      float: left;
+      padding: 0;
+      margin: 0;
+      font-size: $esri-font-size-base;
+      text-align: left;
+      list-style: none;
+      background: $dropdown-bg;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      border: 1px solid $esri-dropdown-border;
+      border-radius: $border-radius-base;
+      overflow: auto;
+      max-height: 300px;
+      @include calcite-box-shadow-dropdown();
+      @include box-sizing(border-box);
+       
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      
+      li {
+        padding: $padding-base-vertical $padding-base-horizontal;
+        line-height: 20px / $esri-font-size-base;
+        @include button-variant($esri-btn-default-color, $esri-btn-default-bg);
+        border-top: 1px solid $esri-dropdown-border;
+        cursor: pointer;
+        outline: none;
+        
+        &:first-child {
+          border-top: 0;
+        }
+      }
+      
+      // Menu header
+      .menuHeader {
+        height: 25px;
+        padding: (25px - $esri-font-size-base) / 2 $padding-base-horizontal;
+        color: $Calcite_Gray_100;
+        line-height: 1;
+        background: $Calcite_Gray_550;
+        @include box-sizing(border-box);
+      }
+    }
+
+    // Suggestions Menu    
+    .showSuggestions .suggestionsMenu {
+      display: block;
+      width: 100%;
+    }
+
+    // Sources Menu
+    .showSources .sourcesMenu {
+      display: block;
+    }
+    
+    // Has Multiple Sources
+    // --------------------------------------------------
+    
+    .hasMultipleSources {
+      .searchToggle {
+        display: block;
+        outline: none;
+      }
+    
+      .searchInput {
+        border-left: 0;
+        border-radius: 0;
+      }
+    }
+    
+    // TODO: More results
+    // --------------------------------------------------
+    
+    .moreResults {
+      .moreHeader {
+        font-weight: bold;
+        margin-bottom: 2px;
+      }
+
+      .moreItem {
+        margin-bottom: 10px;
+      }
+
+      .resultsList {
+        display: none;
+        
+        ul {
+          list-style: none;
+          margin: 0 0 10px 0;
+          padding: 0;
+        }
+        
+        li {
+          padding: 2px 0;
+        }
+        
+        .popupHeader {
+          font-weight: bold;
+        }
+      }
+    }
+    
+    .showMoreResults .resultsList {
+      display: block;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #ccc;
+    }
+    
+    // No results
+    // --------------------------------------------------
+      
+    .noResultsMenu {
+      display: none;
+      width: 100%;
+    }
+    
+    .noResultsBody {
+      padding: $padding-base-vertical $padding-base-horizontal;
+
+      div { 
+        padding: $padding-base-vertical $padding-base-horizontal;
+        @include warning-message();
+        cursor: default;
+      }
+    }
+    
+    .noResultsHeader {
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+    
+    .showNoResults .noResultsMenu {
+      display: block;
+    }
+    
+    .showMoreResults .resultsList {
+      display: block;
+    }
+    
+    .searchExpandContainer {
+      @include bidi-value("float", left, right);
+    }
+
+    // Button Mode
+    // --------------------------------------------------
+  
+    .hasButtonMode {
+      .searchExpandContainer {
+        @include transition(width .175s ease-in);
+        overflow: hidden;
+        height: 32px;
+      }
+      
+      &.showSuggestions .searchExpandContainer {
+        overflow: inherit;
+      }
+      
+      &.searchCollapsed .searchExpandContainer {
+        width: 0px;
+      }
+      
+      &.searchExpanded .searchBtn.searchSubmit {
+      }
+      
+      &.searchCollapsed .searchBtn.searchSubmit {
+        border-left: 0;
+      }
+      
+      &.searchCollapsed .searchExpandContainer {
+        width: 0px;
+        display: none;
+      }
+      
+      &.searchExpanded .searchExpandContainer,
+      .searchAnimate {
+        width: 200px;
+      }
+      
+      &.searchExpanded.hasMultipleSources .searchExpandContainer,
+      &.hasMultipleSources .searchAnimate {
+        width: 233px;
+      }
+    }
+  }
+  
+  .searchClearFloat {
+    clear: both;
+  }
+}
+
+@-webkit-keyframes anim-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes anim-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

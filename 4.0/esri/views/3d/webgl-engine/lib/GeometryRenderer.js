@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["require","exports","./GLVBO","../materials/internal/MaterialUtil"],function(h,k,f,g){return function(){function b(a,d,b,e){this._drawMode=4;this._layout=d;var c=a.faces;this._count=c.indices[c.positionKey].length;c=new Float32Array(this._count*d.getStride());(b||g.fillInterleaved)(a,void 0,void 0,null,d,c,0);this._gl=e;this._vbo=new f(c,d,e)}b.prototype.enablePointRendering=function(a){this._drawMode=a?0:4};b.prototype.render=function(a){this._vbo.bind();this._vbo.setPointers(a);this._layout.enableVertexAttribArrays(this._gl,
+a);this._gl.drawArrays(this._drawMode,0,this._count);this._layout.disableVertexAttribArrays(this._gl,a);this._gl.bindBuffer(34962,null)};return b}()});

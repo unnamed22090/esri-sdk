@@ -1,0 +1,42 @@
+.#{$theme-name} {
+
+  .HomeButton {
+  	span {
+			display: none;
+		}
+
+    // Button
+		.home {
+			padding: 0;
+	    width: 32px;
+	    height: 32px;
+      @include button-variant($esri-btn-default-color, $esri-btn-default-bg);
+	    border-width: 0;
+      border-style: none;
+	    border-radius: $border-radius-base;
+	    text-align: center;
+      @include user-select(none);
+	    @include transition(all .25s ease);
+    	@include calcite-box-shadow-base();
+      @include dijit-icons();
+      font-size: $esri-icon-size-default;
+      line-height: 32px/$esri-icon-size-default;
+      
+      &:before {
+        content: "\e62f";
+      }
+		}
+
+    // Loading
+		.loading {
+			background-image: url($image-loading-circular);
+      background-position: center center;
+      background-repeat: no-repeat;
+      transition: none;
+      &:before { 
+        display:none;
+      }
+		}
+	}
+  
+}

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["require","exports","./gl-matrix"],function(c,q,n){var h=n.vec3d;c=function(){function e(a,b){this._origins=[];this._boxSize=a;this._maxNumOrigins=b}e.prototype.getOrigin=function(f){for(var b=this._origins.length,d,c=!1,k=Number.MAX_VALUE,g=0;g<b;g++){var l=this._origins[g];h.subtract(f,l.vec3,a);a[0]=Math.abs(a[0]);a[1]=Math.abs(a[1]);a[2]=Math.abs(a[2]);var m=a[0]+a[1]+a[2];m<k&&(d=l,k=m,c=a[0]<this._boxSize&&a[1]<this._boxSize&&a[2]<this._boxSize)}if(!c&&(!d||null==this._maxNumOrigins||
+this._origins.length<this._maxNumOrigins))b=e.OFFSET,d={vec3:[f[0]+b,f[1]+b,f[2]+b],id:p+this._origins.length},this._origins.push(d);return d};e.OFFSET=1.11;return e}();var p="fb_",a=h.create();return c});

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["./ArcGISService","../../geometry/SpatialReference","../../geometry/Extent"],function(c,d,e){return c.createSubclass({properties:{copyright:{value:null,json:{readFrom:["copyrightText"],read:function(b,a){return a.copyrightText}}},fullExtent:e,legendEnabled:{json:{readFrom:["showLegend"],read:function(b,a){return a.showLegend}}},popupEnabled:{json:{readFrom:["disablePopup"],read:function(b,a){return!a.disablePopup}}},spatialReference:d,version:{value:null,json:{readFrom:["currentVersion","capabilities",
+"tables","supportedImageFormatTypes"],read:function(b,a){(b=a.currentVersion)||(b=a.hasOwnProperty("capabilities")||a.hasOwnProperty("tables")?10:a.hasOwnProperty("supportedImageFormatTypes")?9.31:9.3);return b}}}}})});

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../core/tsSupport/extendsHelper ../core/tsSupport/decorateHelper ../core/JSONSupporter ../core/accessoireSupport/typescript ./Lighting".split(" "),function(h,k,f,b,g,c,d){return function(e){function a(a){e.call(this,a);this.lighting=null}f(a,e);a.prototype.getDefaults=function(){return{lighting:{}}};a.prototype.clone=function(){return new a({lighting:this.lighting.clone()})};a.prototype.toJSON=function(){return{lighting:this.lighting.toJSON()}};a.sanitizeJSON=function(a){return{lighting:a.lighting?
+d.sanitizeJSON(a.lighting):(new d).toJSON()}};b([c.shared("esri.webscene.Environment")],a.prototype,"declaredClass",void 0);b([c.property({type:d})],a.prototype,"lighting",void 0);return a=b([c.subclass()],a)}(g)});

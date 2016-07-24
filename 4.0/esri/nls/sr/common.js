@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define({about:"About",add:"Add",all:"All",apply:"Apply",auth:{logOut:"Log Out",signIn:"Sign In"},back:"Back",cancel:"Cancel",change:"Change",clear:"Clear",close:"Close",configure:"Configure",control:{pause:"Pause",play:"Play",resume:"Resume",stop:"Stop"},copy:"Copy",create:"Create",cut:"Cut","delete":"Delete",details:"Details",edit:"Edit",error:"Error",esri:"Esri",exit:"Exit",fieldsSummary:"List of attributes and values",find:"Find",form:{no:"No",ok:"OK",password:"Password",submit:"Submit",username:"Username",
+yes:"Yes"},help:"Help",home:"Home",info:"Info",information:"Information",layer:"Layer",loading:"Loading",maximize:"Maximize",menu:"Menu",more:"More",none:"None",open:"Open",pagination:{first:"First",last:"Last",next:"Next",page:"Page",pageText:"{index} of {total}",previous:"Previous"},paste:"Paste",preview:"Preview",print:"Print",publish:"Publish",redo:"Redo",refresh:"Refresh",remove:"Remove",rename:"Rename",reset:"Reset",restore:"Restore",save:"Save",search:"Search",searching:"Searching",select:"Select",
+settings:"Settings",sort:"Sort",share:"Share",title:"Title",untitled:"Untitled",upload:"Upload",undo:"Undo",view:"View",visibility:{hide:"Hide",show:"Show",toggle:"Toggle"},warning:"Warning"});

@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../core/tsSupport/extendsHelper ../core/tsSupport/decorateHelper ../core/JSONSupporter ../core/collectionUtils ../core/accessoireSupport/typescript ./Slide".split(" "),function(l,m,g,c,h,k,d,e){return function(f){function b(a){f.call(this,a);this.slides=null}g(b,f);b.prototype.getDefaults=function(){return{slides:[]}};b.prototype.clone=function(){return new b({slides:this.slides.map(function(a){return a.clone()})})};b.prototype.toJSON=function(){return{slides:this.slides.map(function(a){return a.toJSON()}).toArray()}};
+b.sanitizeJSON=function(a){return{slides:void 0!==a.slides&&Array.isArray(a.slides)?a.slides.map(function(a){return e.sanitizeJSON(a)}):[]}};c([d.shared("esri.webscene.Presentation")],b.prototype,"declaredClass",void 0);c([d.property({reader:function(a){return a.map(function(a){return e.fromJSON(a)})},setter:k.referenceSetter})],b.prototype,"slides",void 0);return b=c([d.subclass()],b)}(h)});

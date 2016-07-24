@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("dojo/_base/lang ./TiledLayer ./mixins/ArcGISMapService ./mixins/ArcGISCachedService ./mixins/PortalLayer ../request ../core/promiseUtils".split(" "),function(c,b,d,e,f,g,h){return b.createSubclass([d,e,f],{declaredClass:"esri.layers.ElevationLayer",portalLoaderModule:"portal/loaders/ElevationLayerLoader",viewModulePaths:{"3d":"../views/3d/layers/ElevationLayerView3D"},normalizeCtorArgs:function(a,b){return"string"===typeof a?c.mixin({},{url:a},b):a},load:function(){this.addResolvingPromise(this.loadFromPortal(this._fetchImageService.bind(this)))},
+_fetchImageService:function(){return h.resolve().then(function(){return this.resourceInfo||g(this.parsedUrl.path,{query:c.mixin({f:"json"},this.parsedUrl.query),responseType:"json",callbackParamName:"callback"})}.bind(this)).then(function(a){a.ssl&&(this.url=this.url.replace(/^http:/i,"https:"));this.read(a.data)}.bind(this))}})});

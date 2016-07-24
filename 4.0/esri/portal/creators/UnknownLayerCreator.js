@@ -1,0 +1,4 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../../core/tsSupport/extendsHelper ../../core/tsSupport/decorateHelper ../../core/accessoireSupport/typescript ../../core/promiseUtils ./LayerCreator ../../layers/UnknownLayer".split(" "),function(k,l,e,b,c,f,g,h){return function(d){function a(){d.apply(this,arguments)}e(a,d);a.prototype.create=function(){return f.resolve(h.fromJSON(this.layer))};b([c.shared("esri.portal.creators.UnknownLayer")],a.prototype,"declaredClass",void 0);return a=b([c.subclass()],a)}(g)});

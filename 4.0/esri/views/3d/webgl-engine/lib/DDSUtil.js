@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["require","exports"],function(t,p){function e(c){return c.charCodeAt(0)+(c.charCodeAt(1)<<8)+(c.charCodeAt(2)<<16)+(c.charCodeAt(3)<<24)}var q=e("DXT1"),r=e("DXT3"),s=e("DXT5");p.uploadDDSLevels=function(c,e,d){var a=new Int32Array(e,0,31);if(542327876!==a[0])return console.error("Invalid magic number in DDS header"),null;if(!(a[20]&4))return console.error("Unsupported format, must contain a FourCC code"),null;var b=a[21],g;switch(b){case q:b=8;g=33776;break;case r:b=16;g=33778;break;case s:b=
+16;g=33779;break;default:return console.error("Unsupported FourCC code:",String.fromCharCode(b&255,b>>8&255,b>>16&255,b>>24&255)),null}var h=1;a[2]&131072&&!1!==d&&(h=Math.max(1,a[7]));d=a[4];for(var f=a[3],k=a[1]+4,n,l,m=0;;++m){m<h&&(l=Math.floor((d+3)/4)*Math.floor((f+3)/4)*b,n=new Uint8Array(e,k,l));c.compressedTexImage2D(c.TEXTURE_2D,m,g,d,f,0,n);k+=l;if(1===d&&1===f||1===h)break;d=Math.max(1,d>>1);f=Math.max(1,f>>1)}return{mipmapCount:h,width:a[4],height:a[3]}}});

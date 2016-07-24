@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../../core/tsSupport/extendsHelper ../../core/tsSupport/decorateHelper ../../core/accessoireSupport/typescript ./LayerCreator ../../layers/ImageryLayer ../../layers/support/RasterFunction".split(" "),function(l,m,f,c,d,g,h,k){return function(e){function a(){e.apply(this,arguments)}f(a,e);a.prototype.layerProperties=function(a){return this.inherited(arguments).then(function(b){a.renderingRule&&a.renderingRule.rasterFunction&&(b.renderingRule=new k(a.renderingRule),b.renderingRule.outputPixelType&&
+(b.renderingRule.outputPixelType=b.renderingRule.outputPixelType.toLowerCase()));return b})};c([d.shared("esri.portal.creators.ImageServiceLayerCreator")],a.prototype,"declaredClass",void 0);c([d.shared(h)],a.prototype,"type",void 0);return a=c([d.subclass()],a)}(g)});

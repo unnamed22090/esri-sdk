@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Theming widgets</title>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
+
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+    }
+    
+    .dark-theme .esri-widget,
+    .dark-theme .esri-widget-button,
+    .dark-theme .esri-menu,
+    .dark-theme .esri-popup-main,
+    .dark-theme .esri-popup .esri-pointer-direction,
+    .dark-theme .esri-button {
+      background-color: #242424;
+      color: #bdbdbd;
+    }
+    
+    .dark-theme .esri-widget-button:focus,
+    .dark-theme .esri-widget-button:hover,
+    .dark-theme .esri-menu li:focus,
+    .dark-theme .esri-menu li:hover {
+      background-color: #333;
+      color: #d1d1d1;
+    }
+    
+    .dark-theme .esri-button:focus,
+    .dark-theme .esri-button:hover {
+      color: #d1d1d1;
+    }
+  </style>
+
+  <script src="https://js.arcgis.com/4.0/"></script>
+  <script>
+    var map, view;
+
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/widgets/Search",
+      "dojo/domReady!"
+    ], function(Map, MapView, Search) {
+
+      map = new Map({
+        basemap: "gray"
+      });
+
+      view = new MapView({
+        map: map,
+        container: "viewDiv",
+        zoom: 12,
+        center: {
+          x: -11847426.869526852,
+          y: 3731351.295683393,
+          spatialReference: 102100
+        }
+      });
+
+      view.ui.add(new Search({
+        view: view
+      }), "top-right");
+
+    });
+  </script>
+</head>
+
+<!-- remove this class name to see the default style -->
+<body class="dark-theme">
+  <div id="viewDiv"></div>
+</body>
+</html>

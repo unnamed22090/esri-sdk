@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["../../core/JSONSupporter","../../core/screenUtils","../../core/lang","../../Color"],function(e,f,d,a){var c=e.createSubclass({classMetadata:{properties:{color:{type:a},size:{value:1}},reader:{exclude:["transparency"]}},getDefaults:function(){return{color:new a([0,0,0,1])}},toJSON:function(){return{color:this.color?[this.color.r,this.color.g,this.color.b]:void 0,transparency:this.color?100*(1-this.color.a):void 0,size:this.size}},clone:function(){return new c({color:d.clone(this.color),size:this.size})},
+_colorReader:function(b,a){var c=null!=a.transparency?1-0.01*a.transparency:1;if(b&&d.isDefined(b[0]))return[b[0],b[1],b[2],c]},_sizeSetter:f.toPt});return c});

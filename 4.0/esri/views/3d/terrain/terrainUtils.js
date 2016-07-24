@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ./terrainUtilsPlanar ./terrainUtilsSpherical ../../../layers/TiledLayer ../../../support/basemapDefinitions".split(" "),function(n,b,h,k,l,d){function e(a){return"esri.views.3d.layers.TiledLayerView3D"===a.declaredClass}function f(a){return"esri.views.3d.layers.ElevationLayerView3D"===a.declaredClass}function g(){c={};for(var a in d)d[a].baseMapLayers.forEach(function(a){c[a.url]=19});c["//services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"]=20}var m={planar:h,
+spherical:k};b.weakAssert=function(a,b){a||console.warn("Terrain: "+b)};b.autoUpdateSkirtsVisibility=function(a,b){m[a.manifold].autoUpdateSkirtsVisibility(a,b)};b.isTiledLayer=function(a){return a.isInstanceOf(l)};b.isTiledMapLayerView=e;b.isElevationLayerView=f;b.isTiledLayerView=function(a){return e(a)||f(a)};var c=null;b.getKnownTiledServiceLevelCap=function(a){c||g();a=a&&a.replace(/https?:/,"");return a in c?c[a]:Infinity};b.prepareKnownTiledServiceLevelCaps=g});

@@ -1,0 +1,18 @@
+.#{$theme-name} {
+
+  // Tab
+  .dijitTabContainerTopRtl .dijitTabContainerTop-tabs,
+  .dijitTabContainerBottomRtl .dijitTabContainerBottom-tabs {
+    .dijitTab {
+      margin-left: 2px;
+      margin-right: 0;
+    }
+  }
+
+  // Tab: close button
+  .dijitTabRtl .dijitTabCloseButton {
+    margin-left: 0;
+    margin-right: 5px;
+  }
+
+}

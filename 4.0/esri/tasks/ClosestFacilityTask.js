@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("../core/declare dojo/_base/lang dojo/Deferred ../request ../geometry/support/normalizeUtils ./Task ./support/NAServiceDescription ./support/ClosestFacilitySolveResult".split(" "),function(b,d,g,k,l,m,n,p){b=b([m,n],{declaredClass:"esri.tasks.ClosestFacilityTask",url:null,_parsedUrlGetter:function(b){var a=this.inherited(arguments);a.path+="/solveClosestFacility";return a},__msigns:[{n:"solve",c:1,a:[{i:0,p:["incidents.features","facilities.features","pointBarriers.features","polylineBarriers.features",
+"polygonBarriers.features"]}],e:2}],solve:function(b,a){var c=new g,e=new g,h=this.__msigns[0].a[0].p,f=a&&a.assembly&&a.assembly[0]||{};this._isInputGeometryZAware(f,h)?e=this.getServiceDescription():e.resolve({dontCheck:!0});e.then(d.hitch(this,function(a){!a.HasZ&&!a.dontCheck&&this._dropZValuesOffInputGeometry(f,h);a=this._encode(d.mixin({},this.parsedUrl.query,{f:"json"},b.toJSON(f)));k(this.parsedUrl.path,{query:a,callbackParamName:"callback"}).then(d.hitch(this,function(a){c.resolve(this._handleSolveResponse(a))}),
+c.reject)},c.reject));return c.promise},_handleSolveResponse:function(b){return p.fromJSON(b.data)}});l._createWrappers(b);return b});

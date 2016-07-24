@@ -1,0 +1,71 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><title>Visualize a Scene Layer with continuous color - 4.0</title><style>html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }</style><link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css"><script src="https://js.arcgis.com/4.0/"></script><script>require([
+      "esri/Map",
+      "esri/views/SceneView",
+      "esri/layers/SceneLayer",
+      "esri/renderers/SimpleRenderer",
+      "esri/symbols/MeshSymbol3D",
+      "dojo/domReady!"
+    ], function(Map, SceneView, SceneLayer,
+      SimpleRenderer, MeshSymbol3D
+    ) {
+
+      // Create default MeshSymbol3D for symbolizing SceneLayer
+      // a new FillSymbol3DLayer is created by default within the symbol
+      var symbol = new MeshSymbol3D();
+
+      // Create the renderer and configure visual variables
+      var renderer = new SimpleRenderer({
+        symbol: symbol,
+        visualVariables: [{
+          // specifies a visual variable of continuous color
+          type: "color",
+          // based on the avgres field, which stores the number of residents per building
+          field: "avgres",
+          // features where avgres <= 5 will be yellow
+          minDataValue: 5,
+          // features where avgres >= 2000 will be red
+          maxDataValue: 2000,
+          // color ramp from yellow to red, more colors can be added
+          // features where avgres is between 5 and 2,000 will be
+          // assigned a color proportional to the min and max colors
+          // specified below
+          colors: ["#FFFF00", "#FF0000"]
+        }]
+      });
+
+      // Create SceneLayer and add to the map
+      var sceneLayer = new SceneLayer({
+        url: "http://tiles.arcgis.com/tiles/V6ZHFr6zdgNZuVG0/arcgis/rest/services/SanFranDT_VV_Sample/SceneServer/layers/0/",
+        renderer: renderer // Set the renderer to sceneLayer
+      });
+
+      // Create Map
+      var map = new Map({
+        basemap: "satellite",
+        ground: "world-elevation",
+        layers: [sceneLayer]
+      });
+
+      // Create the SceneView and add the map
+      var view = new SceneView({
+        container: "viewDiv",
+        map: map,
+        camera: {
+          position: {
+            x: -13626488,
+            y: 4548929,
+            z: 154,
+            spatialReference: 3857
+          },
+          heading: 40,
+          tilt: 85
+        }
+      });
+    });</script></head><body><div id="viewDiv"></div></body></html>

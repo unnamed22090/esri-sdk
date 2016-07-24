@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../core/tsSupport/extendsHelper ../core/tsSupport/decorateHelper ../Viewpoint ../core/Accessoire ../geometry/SpatialReference ./Environment ../core/accessoireSupport/typescript".split(" "),function(l,m,e,b,f,g,h,k,c){return function(d){function a(a){d.call(this,a);this.viewpoint=this.viewingMode=this.spatialReference=this.environment=null}e(a,d);a.prototype.getDefaults=function(){return{environment:{}}};a.prototype.clone=function(){return new a({environment:this.environment.clone(),
+spatialReference:this.spatialReference?this.spatialReference.clone():null,viewingMode:this.viewingMode,viewpoint:this.viewpoint?this.viewpoint.clone():null})};b([c.shared("esri.webscene.InitialViewProperties")],a.prototype,"declaredClass",void 0);b([c.property({type:k})],a.prototype,"environment",void 0);b([c.property({value:null,type:h})],a.prototype,"spatialReference",void 0);b([c.property({value:null,setter:function(a){if(!("local"!==a&&"global"!==a))return a}})],a.prototype,"viewingMode",void 0);
+b([c.property({value:null,type:f})],a.prototype,"viewpoint",void 0);return a=b([c.subclass()],a)}(g)});

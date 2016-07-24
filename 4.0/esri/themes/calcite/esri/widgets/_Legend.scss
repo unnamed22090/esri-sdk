@@ -1,0 +1,125 @@
+.#{$theme-name} {
+  
+  .esriLegendServiceLabel,
+  .esriLegendLayerLabel {
+    color: Calcite_Gray_700;
+    font-size: $textSectionTitleSize;
+  }
+  
+  /* Service */
+
+  .esriLegendService {
+    font-family: $fontFamilyDefault;
+    font-size: $fontSizeDefault;
+    color: Calcite_Gray_650;
+    padding-bottom: $paddingDefaultSpacer*3; 
+    margin-bottom: $marginDefaultSpacer*3;
+    
+    >div {
+      padding-left: $marginDefaultSpacer*3;
+    }
+  }
+
+  .esriLegendServiceLabel {
+    font-weight: bold;
+  }
+
+  /* Layer */
+
+  .esriLegendLayer { 
+    padding-top: $paddingDefaultSpacer*2; 
+    padding-bottom: $paddingDefaultSpacer*2; 
+  }
+  
+  .esriLegendLayerLabel { 
+    padding-top: $paddingDefaultSpacer*2; 
+  }
+
+  /* Group Layer */
+    
+  .esriLegendGroupLayer { 
+    padding-top: $paddingDefaultSpacer*2;
+  }
+
+  .esriLegendLeft { 
+    padding-left: $paddingDefaultSpacer*3; 
+  }
+
+  .esriLegendRight { 
+    padding-right: $paddingDefaultSpacer*3; 
+  }
+
+  // Yiwei: where is this class used?
+  // .esriLegendHoverLabel { 
+  //   position: absolute;
+  //   padding: 10px;
+  //   background-color: #ffffff;
+  //   border: 1px solid #759dc0;
+  //   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.25);
+  // }
+
+  /* Color Ramp */
+    
+  .esriLegendColorRamp {
+    width: 20px;
+    height: 120px;
+  }
+
+  .esriLegendColorRampTick {
+    position: absolute; 
+    width: 4px; 
+    border-top: 1px solid Calcite_Gray_450; 
+    line-height: 0px;
+    right: -2px;
+    left: auto;
+  }
+
+  .esriLegendBorderLessColorRamp .esriLegendColorRampTick {
+    width: 3px;
+    right: 2px;
+  }
+
+  // .dj_rtl .esriLegendColorRampTick {
+  //   left: -2px;
+  //   right: auto;  
+  // }
+
+  // .dj_rtl .esriLegendBorderLessColorRamp .esriLegendColorRampTick {
+  //   left: 2px;
+  //   right: auto;
+  // }
+
+  .esriLegendColorRampTickLast {
+    margin-top: 1px;
+  }
+
+  .esriLegendBorderLessColorRamp .esriLegendColorRampTickLast {
+    margin-top: -1px;
+  }
+
+  .esriLegendColorRampLabels {
+    position: relative;
+    height: 120px;
+  }
+
+  .esriLegendColorRampLabel {
+    position: relative;
+    line-height: 30px;
+    padding-left: $paddingDefaultSpacer*2;
+    padding-right: 0px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  // .dj_rtl .esriLegendColorRampLabel {
+  //   padding-left: 0px;
+  //   padding-right: $paddingDefaultSpacer*2;
+  //   text-align: right;
+  // }
+
+  .esriLegendSizeRampLabel {
+    white-space: nowrap;
+  }
+
+
+}

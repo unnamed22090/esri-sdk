@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../../core/tsSupport/extendsHelper ../../core/tsSupport/decorateHelper ../../core/accessoireSupport/typescript ./LayerLoader ../../core/Collection ../../core/Error".split(" "),function(k,l,e,b,c,f,g,h){return function(d){function a(){d.apply(this,arguments)}e(a,d);a.prototype.validateItem=function(){this.inherited(arguments);if(!(new g(this.portalItem.typeKeywords)).find(function(a){return"elevation 3d layer"===a.toLowerCase()}))throw new h("portal:invalid-layer-item-type",
+"Invalid layer item type '${type}', expected '${expectedType}' ",{type:"Image Service",expectedType:"Image Service Elevation 3D Layer"});};a.prototype.loadLayer=function(){};b([c.shared("esri.portal.loaders.ElevationLayerLoader")],a.prototype,"declaredClass",void 0);b([c.shared(["Image Service"])],a.prototype,"supportedItemTypes",void 0);return a=b([c.subclass()],a)}(f)});

@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["require","exports","../support/aaBoundingRect","../lib/glMatrix"],function(s,m,n,q){function h(c,a,d,b){e.set(d,k);k[b]=a[b];b=e.subtract(k,a);var l=e.subtract(c,a,r),l=e.dot(l,b),f=e.dot(b,b);a=0>=l?a:f<=l?d:e.add(a,e.scale(b,l/f),k);c=e.subtract(c,a,k);return Math.PI/2-Math.atan(c[2]/Math.sqrt(c[0]*c[0]+c[1]*c[1]))}function p(c,a){var d=c.getElevationBounds(),b=c.extent,d=0.5*(d[0]+d[1]);f[0]=b[0];f[1]=b[1];f[2]=d;g[0]=b[2];g[1]=b[3];g[2]=d;d=b=Infinity;a[0]<f[0]?b=h(a,f,g,0):a[0]>g[0]&&
+(b=h(a,g,f,0));a[1]<f[1]?d=h(a,f,g,1):a[1]>g[1]&&(d=h(a,g,f,1));return Math.min(b,d)}var e=q.vec3d,k=e.create(),r=e.create(),f=e.create(),g=e.create();m.autoUpdateSkirtsVisibility=function(c,a){var d,b=!0,e=c.extent,f=n.contains(e,a);f?d=c.getElevation(a):(d=c.getElevationBounds(),d=0.5*(d[0]+d[1]));d>a[2]?b=!1:f||(f=Math.min(e[2]-e[0],e[3]-e[1]),n.containsWithMargin(e,a,c.hideSkirtsDistanceFromExtentMargin*f)?p(c,a)>c.hideSkirtsMinimumCameraTilt&&(b=!1):b=!1);b!==c.skirts&&(c.skirts=b)};m.tiltOnEdge=
+h;m.tiltToExtentEdge=p});

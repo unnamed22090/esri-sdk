@@ -1,0 +1,170 @@
+/* Text Inputs: [TextBox | DateTextBox | CurrencyTextBox | ValidationTextBox | ...] | TextArea
+ * Mainly includes:
+ * 
+ * 1. Containers
+ *      .dijitTextBox
+ *      .dijitInputField - container that wraps "dijitInputInner" or "dijitPlaceHolder"
+ *
+ * 2. Textbox input
+ *      .dijitInputInner
+ *      .dijitPlaceHolder
+ *
+ * 3. States - Hover, Focused, Disabled, Error, Error while Focused e.g.
+ *      .dijitTextBoxHover
+ *      .dijitTextBoxFocused
+ *      .dijitTextBoxDisabled
+ *      .dijitTextBoxError
+ *      .dijitTextBoxErrorFocused
+ *
+*/
+
+.#{$theme-name} {
+
+  // Base styles
+  // --------------------------------------------------
+
+  .dijitTextBox {
+    background-color: $input-bg;
+    border: 1px solid $input-border;
+    border-radius: $input-border-radius;
+    @include transition(border-color ease-in-out .25s, box-shadow ease-in-out .25s);
+
+    .dijitInputField {
+      padding: $padding-base-vertical $padding-base-horizontal;
+      color: $input-color;
+      font-size: $font-size-base;
+      line-height: $line-height-base;
+      line-height: $line-height-computed;
+    }
+
+    .dijitInputInner {
+      line-height: $line-height-base;
+      line-height: $line-height-computed;
+    }
+
+    .dijitPlaceHolder {
+      font-style: normal;
+    }
+
+    // Arrows in combobox, filter select, number spinner, etc.
+    .dijitArrowButton {
+      border-width: 0 0 0 1px;
+      border-color: $input-border;
+      .dijitArrowButtonInner {
+        display: none;
+      }
+    }
+  }
+
+  // Focused state
+  .dijitTextBoxFocused {
+    @include dijit-form-control-focus;
+  }
+  
+  // error state
+  .dijitTextBoxError {
+    @include dijit-form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
+    .dijitValidationContainer {
+      width: $icon-size-large+$padding-base-vertical*2;
+      padding: $padding-base-vertical;
+      @include dijit-icons();
+      font-size: $icon-size-large;
+      line-height: 20/16;
+      line-height: 20px;
+      &:before {
+        content: "\e650";
+      }
+    }
+    .dijitValidationIcon {
+      display: none;
+    }
+  }
+
+  // Disabled state
+  .dijitTextBoxDisabled,
+  .dijitTextBoxDisabled .dijitButtonNode {
+    background-color: $input-bg-disabled;
+  }
+
+
+  // Alternate textboxes
+  // --------------------------------------------------
+
+  .btn-primary {
+    &.dijitTextBox {
+      @include dijit-form-control-variant($btn-primary-border);
+    }
+  }
+  // Success appears as green
+  .btn-success {
+    &.dijitTextBox {
+      @include dijit-form-control-variant($btn-success-border);
+    }
+  }
+  // Info appears as blue-green
+  .btn-info {
+    &.dijitTextBox {
+      @include dijit-form-control-variant($btn-info-border);
+    }
+  }
+  // Warning appears as orange
+  .btn-warning {
+    &.dijitTextBox {
+      @include dijit-form-control-variant($btn-warning-border);
+    }
+  }
+  // Danger and error appear as red
+  .btn-danger {
+    &.dijitTextBox {
+      @include dijit-form-control-variant($btn-danger-border);
+    }
+  }
+
+  // Textarea
+  // --------------------------------------------------
+
+  .dijitTextArea {
+    padding: $padding-base-vertical $padding-base-horizontal;
+    color: $input-color;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+  }
+
+}
+
+
+// /* ======================================================================================================= */
+// /* hacks for browsers */
+// /* ======================================================================================================= */
+
+// .dj_gecko .{$themeName} .dijitTextBox .dijitInputInner,
+// .dj_webkit .{$themeName} .dijitTextBox .dijitInputInner {
+//  // Although we are theoretically only adding 1px to top/bottom, some browsers seem to pad inputs by 1px on left/right,
+//  // so compensate for that too.
+//  padding: $textbox-padding - 1px;
+// }
+
+// /* it seems the input[type="hidden"] has a height (16px) too... this may cause the widget's height calculate error */
+// .dj_ff3 .{$themeName} .dijitInputField input[type="hidden"] {
+//  display: none;
+//  height: 0;
+//  width: 0;
+// }
+
+// .dj_borderbox .{$themeName} .dijitComboBox .dijitHasDropDownOpen .dijitArrowButtonInner {
+//  width:18px;             // quirks mode means border-box sizing, so 18px with the border (same as 16px without border)
+// }
+
+// .dj_borderbox .{$themeName} .dijitComboBoxFocused .dijitHasDropDownOpen .dijitArrowButtonInner {
+//  width:16px;             // when no border, then back to 16px just like content-box sizing
+// }
+
+// .dj_webkit .{$themeName} .dijitDisabled input {
+// }
+
+// .dj_webkit .{$themeName} textarea.dijitTextAreaDisabled {
+// }
+
+// .dj_iequirks .calcite .dijitComboBox .dijitHasDropDownOpen {
+//  padding: 1px 0;
+// }

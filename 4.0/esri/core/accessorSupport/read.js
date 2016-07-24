@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["require","exports","./PropertyOrigin","./utils","./get"],function(z,d,s,v,w){function k(l,d){void 0===d&&(d=s.default.SERVICE);for(var n=v.getProperties(this),k=n.metadatas,m={},e=0,f=Object.getOwnPropertyNames(l);e<f.length;e++){var a=m,b=k,c=f[e],x=l;b[c]&&(!(b[c].json&&!0===b[c].json.ignore)&&(!b[c]||!(b[c].json&&null!=b[c].json.readFrom)))&&(a[c]=!0);for(var q=0,t=Object.getOwnPropertyNames(b);q<t.length;q++){var u=t[q],g;a:{var h=b[u];g=c;var y=x;if(h=h&&h.json&&h.json.readFrom)for(var r=
+0;r<h.length;r++){var p=h[r];if(p===g||-1<p.indexOf(".")&&0===p.indexOf(g)&&w.exists(p,y)){g=!0;break a}}g=!1}g&&(a[u]=!0)}}n.setDefaultOrigin(d);e=0;for(m=Object.getOwnPropertyNames(m);e<m.length;e++)f=m[e],a=(a=(a=k[f])&&a.json&&a.json.read)?a.call(this,l[f],l):l[f],n.set(f,a);n.setDefaultOrigin(s.default.USER);return this}d.read=k;Object.defineProperty(d,"__esModule",{value:!0});d.default=k});

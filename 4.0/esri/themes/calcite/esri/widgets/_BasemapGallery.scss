@@ -1,0 +1,63 @@
+.#{$theme-name} {
+  
+  .esriBasemapGallery {
+    font-size: $esri-basemapgallery-font-size;
+  }
+  
+  // Thumbnail node
+  .esriBasemapGalleryNode {
+    float: left;
+    width: $esri-basemapgallery-item-width;
+    margin: $esri-basemapgallery-item-spacing;
+    padding: 2px;
+    overflow: hidden;
+    text-align: center;
+    @include transition(all .25s ease);
+
+    // Thumbnail
+    .esriBasemapGalleryThumbnail {
+      height: $esri-basemapgallery-item-height;
+      width: $esri-basemapgallery-item-width - 4px;
+      cursor: pointer;
+      vertical-align: top;
+      @include box-sizing(border-box);
+    }
+    
+    // Hover
+    &:hover {
+      background-color: $esri-basemapgallery-item-hover-bg;
+    }
+
+    // Selected
+    &:active,
+    &:focus,
+    &.esriBasemapGallerySelectedNode {
+      background-color: $esri-basemapgallery-item-selected-bg;
+    }
+    
+    // Link that contains the thumbnail
+    a {
+      display: block;
+      @include button-variant($esri-btn-default-color, $esri-btn-default-bg);
+      outline: none;
+    }
+  }
+  
+  // Label
+  .esriBasemapGalleryLabelContainer {
+    display: table;
+    background-color: transparent;
+    text-align: center;
+    width: 100%;
+    height: 2.5em;
+    line-height: normal;
+    padding: $padding-base-vertical 0;
+    overflow: hidden;
+    @include box-sizing(content-box);
+    > * {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+}

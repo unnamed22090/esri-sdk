@@ -1,0 +1,150 @@
+/* ========= Styling rules to affect widgets ========= */
+
+.#{$theme-name} {
+	.dijitPopup {
+		box-shadow: none;
+	}
+
+  .dijitTooltipDialogPopup {
+  	box-shadow: none;
+  }
+
+  .dijitComboBoxHighlightMatch {
+    background-color: $Calcite_Highlight_Blue_200;
+  }
+
+  // Drag and Drop
+  // --------------------------------------------------
+
+  .dojoDndItem {
+    padding: 0;
+    border: 1px solid transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    &:hover,
+    &:focus,
+    &.dojoDndItemOver {
+      background-color: $Calcite_Highlight_Blue_100;
+    }
+  }
+
+  .dojoDndItemOver {
+    cursor: pointer;
+  }
+
+  .dojoDndItemBefore {
+    background: transparent;
+    border-top: 1px solid $Calcite_Blue_a200;
+  }
+
+  .dojoDndItemAfter {
+    background: transparent;
+    border-bottom: 1px solid $Calcite_Blue_a200;
+  }
+
+  .dojoDndMove {}
+
+  // Horizontal
+  .dojoDndHorizontal {
+    .dojoDndItem {
+      display: inline-block;
+    }
+    .dojoDndItemBefore {
+      border-left: 1px solid $Calcite_Blue_a200;
+    }
+    .dojoDndItemAfter {
+      border-right: 1px solid $Calcite_Blue_a200;
+    }
+  }
+
+  // Anchor
+  .dojoDndItemAnchor,
+  .dojoDndItemSelected {
+    &,
+    &:hover,
+    &:focus,
+    &.dojoDndItemOver {
+      background-color: $Calcite_Highlight_Blue_150;
+    }
+  }
+
+  // Avatar
+  .dojoDndAvatar {
+    border-collapse: collapse;
+    border: 1px solid $Calcite_Red_150;
+    background-color: $Calcite_Gray_050;
+    @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+    .dojoDndAvatarItem {
+      td{
+        padding: $padding-base-vertical $padding-base-horizontal;
+        .dojoDndItem {
+          background-color: $Calcite_Gray_050;
+          padding: $padding-base-vertical $padding-base-horizontal;
+          list-style-type: none;
+          @include opacity(1);
+        }
+      }
+    }
+    .dojoDndItemSelected {}
+  }
+
+  .dojoDndAvatarHeader {
+    background-color: $Calcite_Red_100;
+    border-bottom: 1px solid $Calcite_Red_150;
+    padding: 5px;
+    td span {
+      display: block;
+      padding: $padding-base-vertical $padding-base-horizontal;
+      &:before {
+        display: block;
+        float: left;
+        margin-right: $padding-base-horizontal;
+        @include dijit-icons();
+        content: "\e647";
+        font-size: 14px;
+        line-height: 20/16;
+        line-height: 20px;
+        color: $Calcite_Red_a150;
+        vertical-align: middle;
+        text-align: center;
+      }
+    }
+  }
+
+  // can drop
+    .dojoDndAvatarCanDrop {
+      border: 1px solid $Calcite_Green_150;
+      .dojoDndAvatarHeader {
+        background-color: $Calcite_Green_100;
+        border-bottom: 1px solid $Calcite_Green_150;
+        td span {
+          &:before {
+            color: $Calcite_Green_a200;
+            content: "\e65a";
+          }
+        }
+      }
+    }
+
+  &.dojoDndMove,
+  &.dojoDndCopy {
+    .dojoDndItem {
+      &,
+      &:hover,
+      &:focus {
+        background-color: transparent;
+      }
+    }
+    .dojoDndItemAnchor,
+    .dojoDndItemSelected {
+      &,
+      &:hover,
+      &:focus,
+      &.dojoDndItemOver {
+        background-color: $Calcite_Highlight_Blue_150;
+        // @include opacity(.5);
+      }
+    }
+  }
+
+}

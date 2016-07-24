@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../../core/tsSupport/extendsHelper ../../core/tsSupport/decorateHelper ../../core/accessoireSupport/typescript ./support/jsonUtils ./LayerLoader".split(" "),function(k,l,g,c,e,d,h){return function(f){function a(){f.apply(this,arguments)}g(a,f);a.prototype.loadLayer=function(){var a=this;return this.fetchData().then(function(b){if(b){var c=b.layerDefinition&&b.layerDefinition.definitionExpression;d.readIfDefined(a.instance,"definitionExpression",c,{definitionExpression:c});
+d.readIfDefined(a.instance,"minScale",b.minScale,{minScale:b.minScale});d.readIfDefined(a.instance,"maxScale",b.maxScale,{maxScale:b.maxScale});d.readIfDefined(a.instance,"mosaicRule",b.mosaicRule,{mosaicRule:b.mosaicRule});d.readIfDefined(a.instance,"opacity",b.opacity,{opacity:b.opacity});d.readIfDefined(a.instance,"renderingRule",b.renderingRule,{renderingRule:b.renderingRule})}})};c([e.shared("esri.portal.loaders.ImageryLayerLoader")],a.prototype,"declaredClass",void 0);c([e.shared(["Image Service"])],
+a.prototype,"supportedItemTypes",void 0);return a=c([e.subclass()],a)}(h)});

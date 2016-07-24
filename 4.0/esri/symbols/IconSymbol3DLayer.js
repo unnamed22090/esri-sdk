@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("dojo/_base/lang ./Symbol3DLayer ./support/Symbol3DOutline ../core/jsonDictionary ../core/lang ../core/screenUtils".split(" "),function(f,g,c,h,b,k){var d=h({center:"center",left:"left",right:"right",top:"top",bottom:"bottom",topLeft:"top-left",topRight:"top-right",bottomLeft:"bottom-left",bottomRight:"bottom-right"}),e=g.createSubclass({classMetadata:{properties:{outline:{type:c}}},type:"Icon",material:void 0,resource:void 0,size:void 0,_sizeSetter:k.toPt,anchor:void 0,_anchorReader:d.fromJSON,
+outline:void 0,_outlineReader:function(a){return c.fromJSON(a)},toJSON:function(){var a={resource:b.clone(this.resource),size:this.size,anchor:d.toJSON(this.anchor),outline:this.outline?this.outline.toJSON():void 0};f.mixin(a,this.inherited(arguments));return b.fixJson(a,!0)},clone:function(){return new e({anchor:this.anchor,enable:this.enable,material:this.material&&this.material.clone(),outline:this.outline&&this.outline.clone(),resource:b.clone(this.resource),size:this.size})}});return e});

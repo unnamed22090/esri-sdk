@@ -1,0 +1,75 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><title>Visualize data with rotation - 4.0</title><style>html,
+    body,
+    #viewDiv {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }</style><link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css"><script src="https://js.arcgis.com/4.0/"></script><script>require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/layers/StreamLayer",
+      "esri/symbols/PictureMarkerSymbol",
+      "esri/renderers/SimpleRenderer",
+      "esri/PopupTemplate",
+      "dojo/domReady!"
+    ], function(Map, MapView, StreamLayer, PictureMarkerSymbol,
+      SimpleRenderer, PopupTemplate
+    ) {
+
+      var map = new Map({
+        basemap: "gray"
+      });
+
+      // Create a PictureMarkerSymbol using an image of an
+      // upward pointing arrow
+      var picSym = new PictureMarkerSymbol({
+        url: "img/arrow-blue.png",
+        height: 15,
+        width: 15
+      });
+
+      /******************************************************
+       *
+       * Create a SimpleRenderer where each feature will be 
+       * renderered with the same symbol (in this case, an arrow).
+       * Set the symbol on the renderer and a "rotation" 
+       * visual variable that points to a field in the stream service
+       * that contains heading information for each feature.
+       * The "geographic" rotation type assumes 0 degrees is due north.
+       *
+       *******************************************************/
+
+      var rotRenderer = new SimpleRenderer({
+        symbol: picSym,
+        visualVariables: [{
+          type: "rotation",
+          field: "heading",
+          rotationType: "geographic"
+        }]
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-118.2446, 34.0595],
+        zoom: 11
+      });
+
+      var svcUrl =
+        "https://geoeventsample3.esri.com:6443/arcgis/rest/services/LABus/StreamServer";
+
+      // Construct Stream Layer and add it to the map
+      var streamLayer = new StreamLayer({
+        url: svcUrl,
+        purgeOptions: {
+          displayCount: 10000
+        },
+        renderer: rotRenderer,
+        popupTemplate: new PopupTemplate({
+          content: "{*}"
+        })
+      });
+
+      map.add(streamLayer);
+    });</script></head><body><div id="viewDiv"></div></body></html>

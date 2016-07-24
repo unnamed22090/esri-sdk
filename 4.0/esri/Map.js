@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ./core/tsSupport/extendsHelper ./core/tsSupport/decorateHelper ./core/Accessoire ./AllLayersCollection ./core/Evented ./LayersMixin ./support/basemapUtils ./support/groundUtils ./core/accessoireSupport/typescript".split(" "),function(n,p,f,b,g,h,k,l,d,m,c){return function(e){function a(a){e.call(this);this.ground=this.basemap=this.allLayers=null}f(a,e);a.prototype.dojoConstructor=function(){this._basemapCache=d.createCache()};a.prototype.getDefaults=function(a){return a&&a.ground?
+{}:{ground:{}}};b([c.shared("esri.Map")],a.prototype,"declaredClass",void 0);b([c.property({readOnly:!0,getter:function(){return new h({source:this})}})],a.prototype,"allLayers",void 0);b([c.property({value:null,setter:function(a){return d.ensureType(a,this._basemapCache)}})],a.prototype,"basemap",void 0);b([c.property({value:null,setter:function(a){return m.ensureType(a)}})],a.prototype,"ground",void 0);return a=b([c.subclass([k,l])],a)}(g)});

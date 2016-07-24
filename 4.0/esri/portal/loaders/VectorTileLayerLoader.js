@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../../core/tsSupport/extendsHelper ../../core/tsSupport/decorateHelper ../../core/accessoireSupport/typescript ../../core/promiseUtils ../../request ./LayerLoader".split(" "),function(k,l,f,b,c,d,g,h){return function(e){function a(){e.apply(this,arguments)}f(a,e);a.prototype.loadItemProperties=function(){var a=this;if(this.instance.url)return d.resolve(this.portalItem);var b=this.portalItem.itemUrl+"/resources/styles/root.json";return g(b,{callbackParamName:"callback",query:{f:"json"}}).otherwise(function(){b=
+a.portalItem.url}).then(function(){a.instance.url=b;return d.resolve(a.portalItem)})};a.prototype.loadLayer=function(){};b([c.shared("esri.portal.loaders.VectorTileLayerLoader")],a.prototype,"declaredClass",void 0);b([c.shared(["Vector Tile Service"])],a.prototype,"supportedItemTypes",void 0);return a=b([c.subclass()],a)}(h)});

@@ -1,0 +1,135 @@
+.#{$theme-name} {
+  
+  .LayerSwipe {
+    position:absolute;
+    width:100%;
+    height:100%;
+    *z-index:1; /* IE7 */
+
+    .handleContainer {
+      position:relative;
+      width:100%;
+      height:100%;
+      z-index:1;
+    }
+
+    .vertical,
+    .horizontal {
+      position:absolute;
+      background-color: rgba($Calcite_Gray_700, 0.75);
+      padding:0!important;
+      margin:0;
+      z-index:30;
+      @include box-sizing(content-box);
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        background-color: $Calcite_Gray_700;
+      }
+      &:hover {
+        @include opacity(0.75);
+      }
+      .handle {
+        position:absolute;
+        z-index:30;
+        @include dijit-icons();
+        font-size: $esri-icon-size-default;
+        &:before,
+        &:after {
+          display: block;
+          float: left;
+          text-align: center;
+          background-color: rgba($Calcite_Gray_700, 0.75);
+          color: $Calcite_Gray_050;
+        }
+      }
+    }
+
+    // Vertical
+    .vertical {
+      width:$esri-layerswipe-width;
+      height:100%;
+      cursor:col-resize;
+      &:before {
+        left: ($esri-layerswipe-width - 1px)*0.5;
+        height: 100%;
+        width: 1px;
+      }
+      .handle {
+        width:$esri-layerswipe-handle-width*2 + $esri-layerswipe-width;
+        height:$esri-layerswipe-handle-height;
+        margin-top:- $esri-layerswipe-handle-height*0.5;
+        margin-left: - $esri-layerswipe-handle-width;
+        top:50%;
+        left:0;
+        &:before,
+        &:after {
+          content: "\e602";
+          width: $esri-layerswipe-handle-width;
+          height: $esri-layerswipe-handle-height;
+          line-height: $esri-layerswipe-handle-height/$esri-icon-size-default;
+        }
+        &:before {
+          margin-right: $esri-layerswipe-width;
+        }
+      }
+    }
+
+    // Horizontal
+    .horizontal {
+      width:100%;
+      height:$esri-layerswipe-width;
+      cursor:row-resize;
+      &:before {
+        top: ($esri-layerswipe-width - 1px)*0.5;
+        height: 1px;
+        width: 100%;
+      }
+      .handle {
+        width: $esri-layerswipe-handle-height;
+        height: $esri-layerswipe-handle-width*2 + $esri-layerswipe-width;
+        margin-top: - $esri-layerswipe-handle-width;
+        margin-left: - $esri-layerswipe-handle-height*0.5;
+        top: 0;
+        left: 50%;
+        &:before,
+        &:after {
+          content: "\e601";
+          width: $esri-layerswipe-handle-height;
+          height: $esri-layerswipe-handle-width;
+          line-height: $esri-layerswipe-handle-width/$esri-icon-size-default;
+        }
+        &:before {
+          margin-bottom: $esri-layerswipe-width;
+        }
+      }
+    }
+
+    //Scope
+    .scope {
+      background-color: transparent;
+      border: 5px solid $Calcite_Gray_100;
+      outline: 10px solid $Calcite_Gray_700;
+      height: $esri-layerswipe-scope-height;
+      width: $esri-layerswipe-scope-width;
+      overflow:hidden;
+      position:absolute;
+      cursor:move;
+      top:0;
+      left:0;
+      z-index:30;
+      @include transition(opacity .2s ease);
+      @include opacity(0.5);
+      @include box-shadow(inset 0 0px 5px $Calcite_Gray_700);
+      &:hover {
+        @include opacity(0.75);
+      }
+      .handleContainer {
+       display:none;
+      }
+    }
+
+  }
+  
+}

@@ -1,0 +1,235 @@
+/* Menu 
+
+There are three areas of styling for the Menu:  
+ 
+ 1. The menu 
+  There are three types of menus:
+  i) Context Menu
+  ii) Drop down Menu
+  iii) Navigation Menu
+  All three types of menus are affected by the .dijitMenu class in which you can set the background-color, padding and border
+  .dijitMenu affects the drop down menu in TimeTextBox, Calendar, ComboBox and FilteringSelect
+  .dijitMenuTable - for padding - also affects Select widget  
+    
+ 2. The menu bar
+  .dijitMenuBar - for border, margins, padding, background-color of the menu bar
+  .dijitMenuBar .dijitMenuItem - for padding, text color of menu items in the menu bar (overrides .dijitMenuItem) 
+  
+ 3. Menu items - items in the menu.  
+  .dijitMenuItem - for color
+  .dijitMenuItemHover, .dijitMenuItemSelected - for background-color, border, text color, padding of a menu item or menubar item that has been hovered over or selected 
+  .dijitMenuItemActive - for background-color of an active (mousedown) menu item
+  td.dijitMenuItemIconCell - for padding around a  menu item's icon
+  td.dijitMenuItemLabel - for padding around a menu item's label  
+  .dijitMenuSeparatorTop - for border, top border, of the separator
+  .dijitMenuSeparatorBottom - for bottom margin of the separator
+  
+  Styles specific to ComboBox and FilteringSelect widgets: 
+  .dijitComboBoxMenu .dijitMenuItem - for padding and border of a menu item in a ComboBox or FilteringSelect widget's menu
+  .dijitComboBoxMenu .dijitMenuItemSelected- for text color, background-color and border of a menu item in a ComboBox or FilteringSelect widget's menu
+
+*/
+
+@import "compass/utilities/general/clearfix";
+
+.#{$theme-name} {
+  .dijitMenu {
+    padding: 0;
+    margin: 0;
+    font-size: $font-size-base;
+    background-color: $dropdown-bg;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid $dropdown-fallback-border;
+    border: 1px solid $dropdown-border;
+    overflow: auto;
+    @include calcite-box-shadow-dropdown();
+    @include box-sizing(content-box);
+  }
+
+  // This prevents jiggling upon hover of a menu item
+  .dijitMenuTable {
+    border-collapse:separate;
+    border-spacing:0 0;
+  }
+
+  // Menu item
+  //
+  // Note: ComboBox's Menu does not have td cells in it
+  .dijitMenuItem {
+    padding: 0;
+    @include button-variant($btn-default-color, $btn-default-bg, "");
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      color: $dropdown-link-color;
+    }
+    
+    // For menu items in Select, and ComboButton
+    td {
+      padding: $padding-base-vertical;
+      line-height: 20px / $font-size-base;
+      // Icons
+      &.dijitMenuItemIconCell,
+      &.dijitMenuArrowCell {
+        width: 20px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  // For menu items in ComboBox
+  .dijitComboBoxMenu .dijitMenuItem {
+    padding: 8px 20px;
+  }
+  
+  // Disabled state
+  .dijitMenuItemDisabled {
+    &,
+    &:hover,
+    &:focus {
+      color: $dropdown-link-disabled-color;
+      background-color: transparent;
+    }
+  }
+
+  // Selected state 
+  //
+  // For Select and ComboBox
+  .dijitSelectSelectedOption,
+  .dijitSelectSelectedOption:hover td,
+  .dijitSelectSelectedOption:focus td
+  //,
+  //.dijitComboBoxMenu .dijitMenuItemSelected
+  {
+    @include button-variant-default-active();
+    color: $dropdown-link-color;
+  }
+  
+  // Expander
+  //
+  // Same as ".dijitRightArrowButton"
+  .dijitMenuExpand {
+    padding-left: 8px;
+    padding-right: 20px;
+    &:before {
+      content: " ";
+      display: block;
+      width: 0;
+      height: 0;
+      margin: 0 auto;
+      border-left: $caret-width-base dashed;
+      border-top: $caret-width-base solid transparent;
+      border-bottom: $caret-width-base solid transparent;
+      border-right: 0;
+    }
+  }
+  
+  // Checkbox
+  .dijitCheckedMenuItemIconChar {
+    display: none;
+  }
+  
+  .dijitCheckedMenuItemIcon {
+    display: block;
+    padding: 0 8px 0 20px;
+    @include dijit-icons();
+    &:before {
+      content: "\e610";
+    }
+  }
+
+  .dijitCheckedMenuItemChecked .dijitCheckedMenuItemIcon {
+    &:before {
+      content: "\e611";
+    }
+  }
+  
+  // Radio
+  .dijitRadioMenuItem .dijitMenuItemIcon {
+    &:before {
+      content: "\e612";
+    }
+  }
+
+  .dijitRadioMenuItemChecked .dijitMenuItemIcon {
+    &:before {
+      content: "\e613";
+    }
+  }
+  
+  // Separator
+  .dijitMenuSeparatorTop {
+    @include nav-divider($dropdown-divider-bg);
+    margin: 0;
+  }
+  
+  .dijitMenuSeparatorBottom{
+    height: 0;
+  }
+
+  // Menu Bar
+  // --------------------------------------------------
+
+  .dijitMenuBar {
+    color: $navbar-default-link-color;
+    background-color: $navbar-default-bg;
+    border: 1px solid $navbar-default-border;
+    @include pie-clearfix();
+    .dijitMenuItem {
+      float: left;
+      background-color: transparent;
+      padding: $nav-link-padding;
+      padding-top:    $navbar-padding-vertical;
+      padding-bottom: $navbar-padding-vertical;
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        background-image: linear-gradient(to top, transparent 92%, $Calcite_Blue_a200 93%, $Calcite_Blue_a200 100%);
+        transition: color 150ms linear, text-decoration 150ms linear;
+      }
+
+      &.dijitFocused {
+        &,
+        &:hover,
+        &:focus {
+          background-color: $navbar-default-link-active-bg;
+          color: $navbar-default-link-active-color;
+        }
+      }
+      &.dijitMenuItemDisabled {
+        &,
+        &:hover,
+        &:focus {
+          color: $dropdown-link-disabled-color;
+          background-color: transparent;
+          background-image: none;
+        }
+      }
+    }
+  }
+
+}
+
+// /* ======================================================================================================= */
+// /* hacks for browsers */
+// /* ======================================================================================================= */
+
+// .dj_ie .{$themeName} .dijitMenuActive .dijitMenuItemHover,
+// .dj_ie .{$themeName} .dijitMenuActive .dijitMenuItemSelected,
+// .dj_ie .{$themeName} .dijitMenuPassive .dijitMenuItemHover,
+// .dj_ie .{$themeName} .dijitMenuPassive .dijitMenuItemSelected {
+//  // Selectivity set to override ComboBox rules below.
+//  // If this rule isn't present, on IE6 hovering an item in the ComboBox drop down causes two
+//  // items to be highlighted (except when hovering the first item in the list)
+//  padding-top: 6px;
+//  padding-bottom: 5px;
+//  margin-top: -3px;
+// }
+
+// .dj_ie6 .calcite .dijitCheckedMenuItem .dijitMenuItemIcon,
+// .dj_ie6 .calcite .dijitRadioMenuItem .dijitMenuItemIcon {
+//  background-image: url($image-form-checkbox-and-radios-ie6);
+// }

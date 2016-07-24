@@ -1,0 +1,4 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define({statsAvg:"Average : ${avg}",count:"Count : ${count}",percent:"${num}%",high:"High",low:"Low",color:{changeMinMaxToolTIp:"Type in a value.",handleToolTip:"Match data values to colors.",maxValueToolTip:"Type in the largest expected data value.",minValueToolTip:"Type in the smallest expected data value.",changeSymbol:"Change symbol"},size:{handleToolTip:"Match data values to symbol size.",sizeInputBoxLines:"Set line thickness from 0 to 18 pixels.",sizeInputBoxPoints:"Set symbol size from 1 to 120 pixels"}});

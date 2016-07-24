@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["dojo/_base/lang","../core/lang","../core/JSONSupporter","../Color"],function(f,d,e,g){var c=e.createSubclass({classMetadata:{properties:{color:{type:g}},reader:{exclude:["transparency"]}},color:void 0,toJSON:function(){return{color:this.color?[this.color.r,this.color.g,this.color.b]:void 0,transparency:this.color?100*(1-this.color.a):void 0}},_colorReader:function(a,b){var c=null!=b.transparency?1-0.01*b.transparency:1;if(a&&d.isDefined(a[0]))return[a[0],a[1],a[2],c]},clone:function(){return new c(d.clone({color:this.color}))}});
+return e.createSubclass({classMetadata:{properties:{material:{type:c},enable:{}}},enable:!0,type:null,material:void 0,_materialReader:function(a){var b=new c;b.read(a);return b},toJSON:function(){return{type:this.type,enable:this.enable,material:this.material?this.material.toJSON():void 0,elevationInfo:this.elevationInfo?f.clone(this.elevationInfo):void 0}}})});

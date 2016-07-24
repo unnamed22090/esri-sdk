@@ -1,0 +1,4 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["../core/declare","dojo/_base/lang","../core/screenUtils","./Symbol"],function(c,d,b,e){return c(e,{declaredClass:"esri.symbols.MarkerSymbol",angle:0,_angleReader:function(a){return a&&-1*a},type:null,xoffset:0,_xoffsetSetter:b.toPt,yoffset:0,_yoffsetSetter:b.toPt,size:9,_sizeSetter:function(a){return"auto"===a?a:b.toPt(a)},toJSON:function(){return d.mixin(this.inherited(arguments),{size:this.size,angle:this.angle&&-1*this.angle,xoffset:this.xoffset,yoffset:this.yoffset})}})});

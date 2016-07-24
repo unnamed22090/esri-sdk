@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define({noFilterFields:"Layer ${name} has no fields that can be used for filtering.",addToViewer:"Add layer to map",noItemsToDisplay:"There are no items currently available to display.",searchFor:"Search for",searching:"Searching",items:{organizationLabel:"My Organization",onlineLabel:"ArcGIS Online",contentLabel:"My Content",favoritesLabel:"My Favorites"},title:"Select Web Map",searchTitle:"Search",ok:"Ok",cancel:"Cancel",placeholder:"Enter search term",instructionsLeft:"What do you want to do?",
+instructionsRight:"Select a configurable app.",go:"Go",selectDetails:"SELECT",configure:"Create",close:"Close",learnMoreConfigurableApps:"Learn more about configurable apps"});

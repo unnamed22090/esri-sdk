@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["require","exports","../../../layers/support/rasterFormats/LercCodec","./TerrainConst"],function(p,q,n,m){return function(){function d(a,e,b,f){this.samplerData=null;this.level=a;this.i=e;this.j=b;this.extent=f}d.prototype.computeMinMaxValue=function(a,e,b,f){var d=Number.MAX_VALUE,g=-Number.MAX_VALUE,c=a-this.level;if(e>>c===this.i&&b>>c===this.j&&0<c){a=this.samplerData.width-1;var h=a/Math.pow(2,c);e-=this.i<<c;b-=this.j<<c;for(c=b*h;c<=(b+1)*h;c++)for(var k=e*h;k<=(e+1)*h;k++){var l=this.samplerData.pixelData[c+
+k*(a+1)];l!==m.ELEVATION_NODATA_VALUE&&(d=Math.min(d,l),g=Math.max(g,l))}}f[0]=d===Number.MAX_VALUE?this.samplerData.minValue:d;f[1]=g===-Number.MAX_VALUE?this.samplerData.maxValue:g};d.createFromLERC=function(a,e,b,f){b=n.decode(b,{noDataValue:m.ELEVATION_NODATA_VALUE});a=new d(a[0],a[1],a[2],e);a.samplerData={pixelData:b.pixelData,width:b.width,height:b.height,minValue:b.minValue,maxValue:b.maxValue,noDataValue:b.noDataValue,safeWidth:0.99999999*(b.width-1),dx:(b.width-1)/(a.extent[2]-a.extent[0]),
+dy:(b.width-1)/(a.extent[3]-a.extent[1]),x0:a.extent[0],y1:a.extent[3]};a.bounds=[a.samplerData.minValue,-3E38<a.samplerData.maxValue?a.samplerData.maxValue:0];return a};return d}()});

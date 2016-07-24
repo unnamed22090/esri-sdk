@@ -1,0 +1,10 @@
+.#{$theme-name} {
+	
+	.dijitSelectRtl {
+		.dijitButtonContents {
+			border-left: 0;
+			border-right: 1px;
+		}
+	}
+
+}

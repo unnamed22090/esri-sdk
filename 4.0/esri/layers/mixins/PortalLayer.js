@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../../core/tsSupport/declareExtendsHelper ../../core/tsSupport/decorateHelper ../../core/tsSupport/declare ../../core/Accessor ../../core/requireUtils ../../portal/PortalItem dojo/when".split(" "),function(g,n,h,c,b,k,l,m,f){return function(d){function a(){d.apply(this,arguments);this.portalItem=null}h(a,d);a.prototype.loadFromPortal=function(a,b){var c=this;void 0===b&&(b=!0);if(!this.portalItem||!this.portalItem.id)return f(a&&a());var d,e=b&&!this.url;a&&!e&&(d=a());return f(d).then(function(){return l.when(g,
+"../../"+c.portalLoaderModule).then(function(b){return(new b({instance:c,portalItem:c.portalItem,loadFromService:e?a:null})).load().otherwise(function(a){if(e)throw a;console.error(a)})})})};c([b.shared("esri.layers.mixins.PortalLayer")],a.prototype,"declaredClass",void 0);c([b.shared(null)],a.prototype,"portalLoaderModule",void 0);c([b.property({type:m})],a.prototype,"portalItem",void 0);return a=c([b.subclass()],a)}(b.declared(k))});

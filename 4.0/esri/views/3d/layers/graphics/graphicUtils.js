@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("require exports ../../../../geometry/SpatialReference ../../../../geometry/Point ../../../../geometry/support/webMercatorUtils ../../lib/glMatrix".split(" "),function(t,e,f,r,n,s){function p(a,c){var b=a.spatialReference;b.equals(c)||(b.isWebMercator&&c.wkid===f.WGS84.wkid?n.webMercatorToGeographic(a,!1,a):c.isWebMercator&&b.wkid===f.WGS84.wkid&&n.geographicToWebMercator(a,!1,a))}var q=s.vec4d;e.computeCentroid=function(a,c){if("extent"===a.type)return a.center;for(var b=a["polygon"===a.type?
+"rings":"paths"],d=0,e=0,l=0,f=a.hasZ,g=0,m=0;m<b.length;m++){for(var h=b[m],k=0;k<h.length;k++)d+=h[k][0],e+=h[k][1],f&&(l+=h[k][2]);g+=h.length}b=new r({x:d/g,y:e/g,z:f?l/g:void 0,spatialReference:a.spatialReference});c&&p(b,c);return b};e.convertToSR=p;e.enlargeExtent=function(a,c,b){if(a){c||(c=q.create());var d=0.5*a.width*(b-1);b=0.5*a.height*(b-1);a.width<1E-7*a.height?d+=b/20:a.height<1E-7*a.width&&(b+=d/20);q.set4(a.xmin-d,a.ymin-b,a.xmax+d,a.ymax+b,c);return c}return null}});

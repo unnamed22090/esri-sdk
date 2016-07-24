@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define(["require","exports"],function(e,c){c.SerializablePropertyExtension={processPrototypePropertyMetadata:function(c,a,e,f){if(a.type){var b=(c=Array.isArray(a.type))?a.type[0]:a.type;if(b.fromJSON&&(!a.json||!a.json.read))if(a.json||(a.json={}),c)a.json.read=function(a,c){return null==a?a:Array.isArray(a)?a.map(b.fromJSON):[b.fromJSON(a)]};else if(b.prototype.declaredClass&&0===b.prototype.declaredClass.indexOf("esri.core.Collection\x3c")&&b.prototype.itemType.fromJSON){var d=b.prototype.itemType;
+a.json.read=function(a,c){return null==a?a:Array.isArray(a)?new b(a.map(d.fromJSON)):new b([d.fromJSON(a)])}}else a.json.read=b.fromJSON}}};Object.defineProperty(c,"__esModule",{value:!0});c.default=c.SerializablePropertyExtension});

@@ -1,0 +1,112 @@
+/* ProgressBar
+ * 
+ * Styling of the ProgressBar consists of the following:
+ * 
+ * 1. the base progress bar
+ *		.dijitProgressBar -	sets margins for the progress bar
+ *
+ * 2. the empty bar
+ *		.dijitProgressBarEmpty  - sets background img and color for bar or parts of bar that are not finished yet
+ *		Also sets border color for whole bar
+ *
+ * 3. tile mode
+ * 		.dijitProgressBarTile
+ *		inner container for finished portion when in 'tile' (image) mode 
+ * 	
+ * 4. full bar mode
+ * 		.dijitProgressBarFull
+ *		adds border to right side of the filled portion of bar
+ *
+ * 5. text for label of  bar
+ *		.dijitProgressBarLabel - sets text color, which must contrast with both the "Empty" and "Full" parts. 
+ * 	
+ * 6. indeterminate mode
+ *		.dijitProgressBarIndeterminate .dijitProgressBarTile 
+ * 		sets animated gif for the progress bar in 'indeterminate' mode
+ */
+
+// Bar animations
+// -------------------------
+
+// WebKit
+@-webkit-keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+// Spec and IE10+
+@keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+.#{$theme-name} {
+
+  // Outer container
+  .dijitProgressBar {
+    border: 0;
+    overflow: hidden;
+    height: $line-height-computed;
+    margin-bottom: $line-height-computed;
+    background-color: $progress-bg;
+    border-radius: $progress-border-radius;
+    @include box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+  }
+
+  // Tile of progress
+  .dijitProgressBarTile {
+    background-color: transparent;
+    background-size: 40px 40px;
+  }
+
+  .progress-striped .dijitProgressBarTile {
+    @include gradient-striped;
+  }
+
+  .active .dijitProgressBarTile { 
+    @include animation(progress-bar-stripes 2s linear infinite);
+  } 
+
+  // Bar of progress
+  .dijitProgressBarFull {
+    float: left;
+    width: 0%;
+    height: 100%;
+    font-size: $font-size-small;
+    line-height: $line-height-computed;
+    color: $progress-bar-color;
+    text-align: center;
+    background-color: $progress-bar-bg;
+    @include box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+    @include transition(width .6s ease);
+  }
+
+  // Label of progress
+  .dijitProgressBarLabel {
+    color: $progress-bar-text-color;
+    font-size: $progress-bar-font-size;
+    line-height: $line-height-computed;
+  }
+
+  // Variations
+  // -------------------------
+
+  .dijitProgressBar {
+    &.progress-bar-success .dijitProgressBarFull {
+      @include dijit-progress-bar-variant($progress-bar-success-bg);
+    }
+
+    &.progress-bar-info .dijitProgressBarFull {
+      @include dijit-progress-bar-variant($progress-bar-info-bg);
+    }
+
+    &.progress-bar-warning .dijitProgressBarFull {
+      @include dijit-progress-bar-variant($progress-bar-warning-bg);
+    }
+
+    &.progress-bar-danger .dijitProgressBarFull {
+      @include dijit-progress-bar-variant($progress-bar-danger-bg);
+    }
+  }
+
+}

@@ -1,0 +1,294 @@
+// ┌──────────────────────────────────────────┐
+// │   Variables and ../bootstrap/mixins      │
+// │   from Calcite Bootstrap                 │
+// └──────────────────────────────────────────┘
+
+@import "../bootstrap/_colors-default";
+@import "../bootstrap/calcite";
+
+// ../bootstrap/mixins
+// --------------------------------------------------
+
+// Utilities
+@import "../bootstrap/mixins/hide-text";
+@import "../bootstrap/mixins/opacity";
+@import "../bootstrap/mixins/image";
+@import "../bootstrap/mixins/labels";
+@import "../bootstrap/mixins/reset-filter";
+@import "../bootstrap/mixins/resize";
+@import "../bootstrap/mixins/responsive-visibility";
+@import "../bootstrap/mixins/size";
+@import "../bootstrap/mixins/tab-focus";
+@import "../bootstrap/mixins/text-emphasis";
+@import "../bootstrap/mixins/text-overflow";
+@import "../bootstrap/mixins/vendor-prefixes";
+
+// Components
+@import "../bootstrap/mixins/alerts";
+@import "../bootstrap/mixins/buttons";
+@import "../bootstrap/mixins/panels";
+@import "../bootstrap/mixins/pagination";
+@import "../bootstrap/mixins/list-group";
+@import "../bootstrap/mixins/nav-divider";
+@import "../bootstrap/mixins/forms";
+@import "../bootstrap/mixins/progress-bar";
+@import "../bootstrap/mixins/table-row";
+
+// Skins
+@import "../bootstrap/mixins/background-variant";
+@import "../bootstrap/mixins/border-radius";
+@import "../bootstrap/mixins/gradients";
+
+// Layout
+@import "../bootstrap/mixins/clearfix";
+@import "../bootstrap/mixins/center-block";
+@import "../bootstrap/mixins/nav-vertical-align";
+@import "../bootstrap/mixins/grid-framework";
+@import "../bootstrap/mixins/grid";
+
+
+// Mixins
+@import "../mixins/icons";
+@import "../mixins/buttons";
+@import "../mixins/forms";
+@import "../mixins/progressbar";
+@import "../mixins/common";
+@import "../mixins/slider";
+
+// ┌─────────────────────┐
+// │   Dojo dijits only  │
+// └─────────────────────┘
+
+$theme-name:                    "calcite";                       // Theme name
+
+$font-size-base:                12px;
+// $font-size-large:            ceil(($font-size-base * 1.25)) !default; // ~18px
+// $font-size-small:            ceil(($font-size-base * 0.85)) !default; // ~12px
+$icon-size-base:                12px;
+$icon-size-large:               16px;
+//** Unit-less `line-height` for use in components like buttons.
+$line-height-base:              20/12; // 20/12
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+$line-height-computed:          floor(($font-size-base * $line-height-base)); // ~20px
+
+
+// ┌─────────┐
+// │ Buttons │
+// └─────────┘
+
+// $link-color variable is set in the scaffolding.scss file
+
+$btn-font-weight:                normal !default;
+
+$btn-default-color:              $Calcite_Gray_650;
+$btn-default-bg:                 $Calcite_Gray_050;
+$btn-default-border:             $Calcite_Gray_300;
+
+$btn-primary-color:              $Calcite_Gray_050;
+$btn-primary-bg:                 $Calcite_Blue_a250;
+$btn-primary-border:             darken($Calcite_Blue_a250, 5%);
+
+$btn-success-color:              $Calcite_Gray_050 !default;
+$btn-success-bg:                 $brand-success !default;
+$btn-success-border:             darken($btn-success-bg, 5%) !default;
+
+$btn-info-color:                 $Calcite_Gray_650 !default;
+$btn-info-bg:                    $Calcite_Blue_150 !default;
+$btn-info-border:                $Calcite_Blue_a200 !default;
+
+$btn-warning-color:              $Calcite_Gray_650 !default;
+$btn-warning-bg:                 $Calcite_Yellow_150 !default;
+$btn-warning-border:             $Calcite_Yellow_a150 !default;
+
+$btn-danger-color:               $Calcite_Gray_050 !default;
+$btn-danger-bg:                  $brand-danger !default;
+$btn-danger-border:              darken($btn-danger-bg, 5%) !default;
+
+$btn-link-disabled-color:        $gray-light !default;
+
+$btn-border-radius-base:         $border-radius-base !default;
+$btn-border-radius-large:        $border-radius-large !default;
+$btn-border-radius-small:        $border-radius-small !default;
+
+// ┌────────────┐
+// │ Components │
+// └────────────┘
+
+$padding-base-vertical:     5px;
+$padding-base-horizontal:   10px;
+
+$padding-large-vertical:    10px !default;
+$padding-large-horizontal:  16px !default;
+
+$padding-small-vertical:    5px !default;
+$padding-small-horizontal:  10px !default;
+
+$padding-xs-vertical:       1px !default;
+$padding-xs-horizontal:     5px !default;
+
+$line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome
+$line-height-small:         1.5 !default;
+
+$border-radius-base:        0px;
+$border-radius-large:       0px !default;
+$border-radius-small:       0px !default;
+
+//** Global color for active items (e.g., navs or dropdowns).
+$component-active-color:    $Calcite_Gray_050 !default;
+//** Global background color for active items (e.g., navs or dropdowns).
+$component-active-bg:       $Calcite_Blue_a250 !default;
+
+//** Width of the `border` for generating carets that indicator dropdowns.
+$caret-width-base:          4px !default;
+//** Carets increase slightly in size for larger components.
+$caret-width-large:         5px !default;
+
+
+// ┌───────┐
+// │ Forms │
+// └───────┘
+
+//** `<input>` background color
+$input-bg:                       $Calcite_Gray_050 !default;
+//** `<input disabled>` background color
+$input-bg-disabled:              $Calcite_Gray_100 !default;
+$input-border-disabled:          $Calcite_Gray_400 !default;
+
+//** Text color for `<input>`s
+$input-color:                    $Calcite_Gray_650 !default;
+//** `<input>` border color
+$input-border: $Calcite_Gray_300;
+
+// YIWEI: new var
+$input-caret-padding-vertical: ($line-height-computed + $padding-base-vertical*2 - $icon-size-base) * .5 !default;
+
+
+// TODO: Rename `$input-border-radius` to `$input-border-radius-base` in v4
+//** Default `.form-control` border radius
+// This has no effect on `<select>`s in some browsers, due to the limited stylability of `<select>`s in CSS.
+$input-border-radius:            $border-radius-base !default;
+//** Large `.form-control` border radius
+$input-border-radius-large:      $border-radius-large !default;
+//** Small `.form-control` border radius
+$input-border-radius-small:      $border-radius-small !default;
+
+//** Border color for inputs on focus
+$input-border-focus: $Calcite_Blue_a250;
+
+//** Placeholder text color
+$input-color-placeholder:        $Calcite_Gray_450 !default;
+
+//** Default `.form-control` height
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2);
+//** Large `.form-control` height
+$input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) !default;
+//** Small `.form-control` height
+$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default;
+
+//** `.form-group` margin
+$form-group-margin-bottom:       15px !default;
+
+$legend-color:                   $gray-dark !default;
+$legend-border-color:            $Calcite_Gray_250 !default;
+
+//** Background color for textual input addons
+$input-group-addon-bg:           $Calcite_Gray_200 !default;
+//** Border color for textual input addons
+$input-group-addon-border-color: $input-border !default;
+
+//** Disabled cursor for form controls and buttons.
+$cursor-disabled:                not-allowed !default;
+
+
+// ┌───────────┐
+// │ Dropdowns │
+// └───────────┘
+
+//** Background for the dropdown menu.
+$dropdown-bg:                    $Calcite_Gray_050;
+//** Dropdown menu `border-color`.
+$dropdown-border:                rgba(0,0,0,0.125);
+//** Dropdown menu `border-color` **for IE8**.
+$dropdown-fallback-border:       $Calcite_Gray_300;
+//** Divider color for between dropdown items.
+$dropdown-divider-bg:            $Calcite_Gray_200;
+
+//** Dropdown link text color.
+$dropdown-link-color:            $Calcite_Gray_550;
+//** Hover color for dropdown links.
+$dropdown-link-hover-color:      darken($Calcite_Gray_650, 5%) !default;
+//** Hover background for dropdown links.
+$dropdown-link-hover-bg:         $Calcite_Gray_200 !default;
+
+//** Active dropdown menu item text color.
+$dropdown-link-active-color:     $component-active-color !default;
+//** Active dropdown menu item background color.
+$dropdown-link-active-bg:        $component-active-bg !default;
+
+//** Disabled dropdown menu item background color.
+$dropdown-link-disabled-color:   $gray-light !default;
+
+//** Text color for headers within dropdown menus.
+$dropdown-header-color:          $Calcite_Gray_650 !default;
+
+//** Deprecated `$dropdown-caret-color` as of v3.1.0
+$dropdown-caret-color:           $Calcite_Gray_700 !default;
+
+
+
+
+
+// ┌──────────┐
+// │ Checkbox │
+// └──────────┘
+
+$checkbox-default-bg:            $Calcite_Gray_050 !default;
+$checkbox-default-border:        $input-border !default;
+
+// ┌───────┐
+// │ Radio │
+// └───────┘
+
+$radio-default-bg:               $Calcite_Gray_050 !default;
+$radio-default-border:           $input-border !default;
+$radio-alternative-bg:           transparent !default; // background color of radios inside alternative buttons
+$radio-alternative-border-fallback: $Calcite_Gray_050 !default; // border color of radios inside alternative buttons (fallback)
+$radio-alternative-border:       rgba($Calcite_Gray_050, 0.5) !default; // border color of radios inside alternative buttons
+
+// ┌──────────────┐
+// │ Progress bar │
+// └──────────────┘
+
+$progress-bar-text-color:        $text-color !default;
+$progress-bar-font-size:         $font-size-small;
+
+
+// ┌──────────────┐
+// │    Slider    │
+// └──────────────┘
+
+$slider-default-bg:               $Calcite_Gray_400 !default;
+$slider-thumb-default-color:      $Calcite_Gray_700 !default;
+$slider-primary-bg:               $Calcite_Blue_a150 !default;
+$slider-thumb-primary-color:      $Calcite_Blue_a250 !default;
+$slider-success-bg:               $Calcite_Green_a100 !default;
+$slider-thumb-success-color:      $Calcite_Green_a250 !default;
+$slider-info-bg:                  $Calcite_Blue_150 !default;
+$slider-thumb-info-color:         $Calcite_Blue_a200 !default;
+$slider-warning-bg:               $Calcite_Yellow_150 !default;
+$slider-thumb-warning-color:      $Calcite_Yellow_a200 !default;
+$slider-danger-bg:                $Calcite_Red_a100 !default;
+$slider-thumb-danger-color:       $Calcite_Red_a250 !default;
+
+$slider-bar-width:               8px !default;
+$slider-bar-spacing:             5px !default;
+$slider-progressbar-bg:          $slider-default-bg !default;
+$slider-remainingbar-bg:         $Calcite_Gray_300 !default;
+$slider-thumb-bg:                $slider-thumb-default-color !default;
+$slider-button-width:            20px !default;
+$slider-button-height:           20px !default;
+$slider-button-icon-size:        10px !default;
+$slider-ruler-color:             $Calcite_Gray_400 !default;
+$slider-ruler-padding:           2px !default;
+$slider-label-color:             $Calcite_Gray_650 !default;
+$slider-label-font-size:         10px !default;

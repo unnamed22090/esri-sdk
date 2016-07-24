@@ -1,0 +1,121 @@
+@require "../../dijit/variables";
+
+.{$themeName} {
+  
+  .esriLargeSlider {
+    position: absolute;
+
+    .dijitSliderIncrementIconV,
+    .dijitSliderDecrementIconV {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      buttonDefault();
+      calciteWeb_BoxShadow();
+
+      &:hover {
+        buttonHover();
+      }
+      
+      &:focus {
+        buttonActive();
+      }
+      
+      &:disabled,
+      &:disabled:hover {
+        color: $textColorDisabled;
+      }
+      
+      &:before {
+        iconfont();
+        line-height: unit((20px / $fontSizeIconSmall), "");
+      }
+        
+      .dijitSliderButtonInner {
+        display: none;
+      }
+    }
+    
+    .dijitSliderIncrementIconV,
+    .dijitSliderIncrementIconH {
+      &:before {
+        content: $iconFontLookup["esriIconZoomIn"];
+      }
+    }
+    
+    .dijitSliderDecrementIconV,
+    .dijitSliderDecrementIconH {
+      &:before {
+        content: $iconFontLookup["esriIconZoomOut"];
+      }
+    }
+  }
+
+  .esriLargeSliderVertical {
+    height: 200px;
+    position: absolute;
+  }
+  
+  .esriLargeSliderTL {
+    top: 20px;
+    left: 20px;
+  }
+  
+  .esriLargeSliderTR {
+    top: 30px;
+    right: 15px;
+  }
+  
+  .esriLargeSliderBL {
+    bottom: 40px;
+    left: 30px;
+  }
+  
+  .esriLargeSliderBR {
+    bottom: 45px;
+    right: 15px;
+  }
+  
+  .dijitSliderButtonContainer * {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+
+  // // Test styles added by Yiwei
+  // .esriLargeSlider {
+  //   background-color: #fff;
+  //   border: 1px solid $borderColorDefault;
+  //   .dijitSliderButtonContainerV {
+  //     padding: 0;
+  //   }
+  //   .dijitSliderIncrementIconV,
+  //   .dijitSliderDecrementIconV {
+  //     box-shadow: none;
+  //   }
+  // }
+  // .esriLargeSliderVertical {
+  //   width: 24px;
+  //   .dijitSliderIncrementIconV {
+  //     border-width: 0 0 1px 0;
+  //     margin-bottom: 5px;
+  //   }
+  //   .dijitSliderDecrementIconV {
+  //     border-width: 1px 0 0 0;
+  //     margin-top: 5px;
+  //   }
+  //   .dijitSliderDecorationV {
+  //     height: auto;
+  //     margin: 0 7px;
+  //     display: block;
+  //     position: absolute;
+  //     bottom: 35px;
+  //     top: 35px;
+  //     width: 10px;
+  //     left: 0;
+  //   }
+  //   .esriLargeSliderTicks {
+  //     width: 10px;
+  //   }
+  // }
+}

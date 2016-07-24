@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/4.0/esri/copyright.txt for details.
+//>>built
+define("../../core/Accessoire ../../core/declare ../../core/jsonDictionary ../../core/lang ../../geometry/support/jsonUtils ./SpatialRelationship dojo/_base/lang".split(" "),function(a,c,d,e,f,g,h){var k=d({esriSpatialRelIntersects:"intersects",esriSpatialRelContains:"contains",esriSpatialRelCrosses:"crosses",esriSpatialRelEnvelopeIntersects:"envelope-intersects",esriSpatialRelIndexIntersects:"index-intersects",esriSpatialRelOverlaps:"overlaps",esriSpatialRelTouches:"touches",esriSpatialRelWithin:"within",
+esriSpatialRelRelation:"relation"});a=c(a,{declaredClass:"esri.tasks.support.DataLayer",geometry:null,name:null,spatialRelationship:null,where:null,toJSON:function(){var a={type:"layer",layerName:this.name,where:this.where,spatialRel:k.toJSON(this.spatialRelationship)},b=this.geometry;b&&(a.geometryType=f.getJsonType(b),a.geometry=b.toJSON());return e.filter(a,function(a){if(null!==a)return!0})}});h.mixin(a,g);return a});
