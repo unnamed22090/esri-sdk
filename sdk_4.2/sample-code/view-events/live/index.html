@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Add keyboard navigation shortcuts - 4.2</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.2/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.2/"></script>
+
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "dojo/domReady!"
+    ], function(Map, MapView) {
+
+      var map = new Map({
+        basemap: "national-geographic"
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-85.050200, 33.125524],
+        zoom: 4
+      });
+
+      /******************************************
+       * Listen to `key-down` event on the MapView
+       * to add keyboard navigation shortcut 
+       ******************************************/
+      view.on("key-down", function(evt) {
+        var zm;
+
+        // incrementally zoom in on the view 
+        // if the `+` key is pressed
+        if (evt.key === "+") {
+          zm = view.zoom + 1;
+        }
+        // incrementally zoom out on the view 
+        // if the `-` key is pressed
+        else if (evt.key == "-") {
+          zm = view.zoom - 1;
+        }
+        else {
+          return;
+        }
+
+        view.goTo({
+          target: view.center,
+          zoom: zm
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+</body>
+</html>
