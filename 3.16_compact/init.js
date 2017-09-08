@@ -6,11 +6,11 @@ try {
 		var _config = {};
 	}
 	if (_config.baseUrl == undefined || _config.baseUrl == null || _config.baseUrl == '') {
-		_config.baseUrl = 'darknamer-spg.ddns.net/esri-sdk/3.16';
+		_config.baseUrl = 'darknamer-spg.ddns.net/esri-sdk/3.16_compact';
 	}
 } catch (ex) {
 	var _config = {
-		baseUrl: 'darknamer-spg.ddns.net/esri-sdk/3.16'
+		baseUrl: 'darknamer-spg.ddns.net/esri-sdk/3.16_compact'
 	};
 }
 

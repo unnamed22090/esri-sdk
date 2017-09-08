@@ -2,16 +2,16 @@
 // See http://js.arcgis.com/4.0/esri/copyright.txt for details.
 //>>built
 try {
-  if (_config == undefined) {
-    var _config = {};
-  }
-  if (_config.baseUrl == undefined || _config.baseUrl == null || _config.baseUrl == '') {
-    _config.baseUrl = 'esri.darknamer.com/4.0/';
-  }
+	if (_config == undefined) {
+		var _config = {};
+	}
+	if (_config.baseUrl == undefined || _config.baseUrl == null || _config.baseUrl == '') {
+		_config.baseUrl = 'darknamer-spg.ddns.net/esri-sdk/4.0';
+	}
 } catch (ex) {
-  var _config = {
-    baseUrl: 'esri.darknamer.com/4.0/'
-  };
+	var _config = {
+		baseUrl: 'darknamer-spg.ddns.net/esri-sdk/4.0'
+	};
 }
 
 (function(a,h){var m,n=function(){},g=function(l){for(var c in l)return 0;return 1},k={}.toString,f=function(l){return"[object Function]"==k.call(l)},e=function(l){return"[object String]"==k.call(l)},d=function(l){return"[object Array]"==k.call(l)},c=function(l,c){if(l)for(var b=0;b<l.length;)c(l[b++])},b=function(l,c){for(var b in c)l[b]=c[b];return l},p=function(l,c){return b(Error(l),{src:"dojoLoader",info:c})},q=1,u=function(){return"_"+q++},t=function(l,c,b){return la(l,c,b,0,t)},r=this,s=r.document,
